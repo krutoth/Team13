@@ -55,7 +55,8 @@ public class Raycast : MonoBehaviour
                 outline.OutlineWidth = 5f;
             }
 
-            if (Input.GetAxis("js11") != 0)
+            // Use X on keyboard or js11 on joystick to interact with objects
+            if (Input.GetAxis("js11") != 0 || Input.GetKeyDown("js24") || Input.GetKeyDown(KeyCode.X))
             {
                 if (hit.collider.CompareTag("Door"))
                 {
