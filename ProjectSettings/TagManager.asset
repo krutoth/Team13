@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Door
+  - Slide Door
+  - Hide Place
   layers:
   - Default
   - TransparentFX
