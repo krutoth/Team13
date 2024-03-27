@@ -1,23 +1,30 @@
+Unity Editor version:    2021.3.16f1 (4016570cf34f)
+Branch:                  2021.3/evg/staging/82bb020e-b03b1330/draft-0
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 14.3 (Build 23D56)
+Darwin version:          23.3.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        36864 MB
 Using pre-set license
-Built from '2021.3/evg/staging/82bb020e-b03b1330/draft-0' branch; Version is '2021.3.16f1 (4016570cf34f) revision 4200023'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22631) 64bit ProfessionalN' Language: 'zh' Physical Memory: 31895 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+Pro License: YES
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Unity.exe
+/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker2
 -projectPath
-C:/Users/35498/OneDrive/Desktop/Team13-main
+/Users/Master/Documents/GitHub/Team13
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-60816
-Successfully changed project path to: C:/Users/35498/OneDrive/Desktop/Team13-main
-C:/Users/35498/OneDrive/Desktop/Team13-main
+50702
+Successfully changed project path to: /Users/Master/Documents/GitHub/Team13
+/Users/Master/Documents/GitHub/Team13
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,257 +54,152 @@ C:/Users/35498/OneDrive/Desktop/Team13-main
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [28996] Host "[IP] 192.168.1.3 [Port] 0 [Flags] 2 [Guid] 2548576554 [EditorId] 2548576554 [Version] 1048832 [Id] WindowsEditor(7,weicheng) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 1419075810 [EditorId] 1419075810 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [28996] Host "[IP] 192.168.1.3 [Port] 0 [Flags] 2 [Guid] 2548576554 [EditorId] 2548576554 [Version] 1048832 [Id] WindowsEditor(7,weicheng) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 1419075810 [EditorId] 1419075810 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 70.81 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 61.12 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.16f1 (4016570cf34f)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/35498/OneDrive/Desktop/Team13-main/Assets
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/Master/Documents/GitHub/Team13/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: AMD Radeon RX 7900 XTX (ID=0x744c)
-    Vendor:   ATI
-    VRAM:     24511 MB
-    Driver:   31.0.23013.3005
+ preferred device: Apple M3 Max (high power)
+Metal devices available: 1
+0: Apple M3 Max (high power)
+Using device Apple M3 Max (high power)
+Initializing Metal device caps: Apple M3 Max
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56108
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56247
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003697 seconds.
-Native extension for WindowsStandalone target not found
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Registered in 0.000506 seconds.
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+[usbmuxd] Send listen message
+Native extension for iOS target not found
+[usbmuxd] Attached: 1 00008110-000E04200C13801E
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 62.75 ms, found 9 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 53.01 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.427 seconds
+- Completed reload, in  0.307 seconds
 Domain Reload Profiling:
-	ReloadAssembly (428ms)
-		BeginReloadAssembly (50ms)
+	ReloadAssembly (307ms)
+		BeginReloadAssembly (18ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (0ms)
-		EndReloadAssembly (309ms)
-			LoadAssemblies (49ms)
+		EndReloadAssembly (241ms)
+			LoadAssemblies (18ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (71ms)
+			SetupTypeCache (50ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (15ms)
-			SetupLoadedEditorAssemblies (190ms)
+			RebuildScriptCaches (13ms)
+			SetupLoadedEditorAssemblies (158ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (35ms)
+				InitializePlatformSupportModulesInManaged (53ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (63ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (59ms)
-				ProcessInitializeOnLoadMethodAttributes (32ms)
+				RefreshPlugins (53ms)
+				BeforeProcessingInitializeOnLoad (0ms)
+				ProcessInitializeOnLoadAttributes (34ms)
+				ProcessInitializeOnLoadMethodAttributes (18ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005019 seconds.
+Registered in 0.001592 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\35498\OneDrive\Desktop\Team13-main\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\35498\OneDrive\Desktop\Team13-main\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Native extension for WindowsStandalone target not found
+Symbol file LoadedFromMemory doesn't match image /Users/Master/Documents/GitHub/Team13/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image /Users/Master/Documents/GitHub/Team13/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Native extension for iOS target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 68.15 ms, found 9 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 51.96 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 Mono: successfully reloaded assembly
-- Completed reload, in  0.901 seconds
+- Completed reload, in  0.659 seconds
 Domain Reload Profiling:
-	ReloadAssembly (901ms)
-		BeginReloadAssembly (175ms)
+	ReloadAssembly (659ms)
+		BeginReloadAssembly (149ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (2ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (118ms)
-		EndReloadAssembly (653ms)
-			LoadAssemblies (57ms)
+		EndReloadAssembly (456ms)
+			LoadAssemblies (27ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (184ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (32ms)
-			SetupLoadedEditorAssemblies (351ms)
+			SetupTypeCache (137ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (243ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (10ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (68ms)
-				BeforeProcessingInitializeOnLoad (65ms)
-				ProcessInitializeOnLoadAttributes (191ms)
-				ProcessInitializeOnLoadMethodAttributes (14ms)
-				AfterProcessingInitializeOnLoad (4ms)
+				RefreshPlugins (52ms)
+				BeforeProcessingInitializeOnLoad (46ms)
+				ProcessInitializeOnLoadAttributes (124ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
+			AwakeInstancesAfterBackupRestoration (1ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.43 ms, found 9 plugins.
+Launching external process: /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4351 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 52 unused Assets / (97.6 KB). Loaded Objects now: 4793.
-Memory consumption went from 157.0 MB to 156.9 MB.
-Total: 3.661100 ms (FindLiveObjects: 0.356200 ms CreateObjectMapping: 0.136000 ms MarkObjects: 3.055100 ms  DeleteObjects: 0.113100 ms)
+Unloading 54 unused Assets / (104.9 KB). Loaded Objects now: 4794.
+Memory consumption went from 152.1 MB to 152.0 MB.
+Total: 2.452041 ms (FindLiveObjects: 0.101708 ms CreateObjectMapping: 0.042166 ms MarkObjects: 2.220084 ms  DeleteObjects: 0.087709 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 93614.216425 seconds.
-  path: Assets/Prefabs/PeasantDamaged.prefab
-  artifactKey: Guid(12de0102603d5bb4b980449f39a76221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/PeasantDamaged.prefab using Guid(12de0102603d5bb4b980449f39a76221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4220fc3b3196b1da9b69926bc7f94687') in 0.043795 seconds 
+  Time since last request: 10886.207552 seconds.
+  path: Assets/Animation
+  artifactKey: Guid(9161d4bc28c1f4f00ac869030e7fa5e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation using Guid(9161d4bc28c1f4f00ac869030e7fa5e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '427a95fec87e4ab0daf682b5a2c31833') in 0.006800 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Prefabs/scary_house_TEX_N_EMB.prefab
-  artifactKey: Guid(c61a4e13990fecc46ac441d5d080bacd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/scary_house_TEX_N_EMB.prefab using Guid(c61a4e13990fecc46ac441d5d080bacd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ef7eca64439a8cc3c224ad7982db53b') in 0.021400 seconds 
+  Time since last request: 2.395308 seconds.
+  path: Assets/MiLabCardboardExtension
+  artifactKey: Guid(85317bf24c6b6f149b0b4349098858c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MiLabCardboardExtension using Guid(85317bf24c6b6f149b0b4349098858c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df2be48a16b36cdb719247c36d7754a6') in 0.001623 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 37.842393 seconds.
-  path: Assets/Scenes/0327 Presentastion.unity
-  artifactKey: Guid(67397e858e46b4dbf95c20d3932bb565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/0327 Presentastion.unity using Guid(67397e858e46b4dbf95c20d3932bb565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2507498546afabc2c5e39bc16a5a42a4') in 0.005953 seconds 
+  Time since last request: 1.714238 seconds.
+  path: Assets/Models/Materials
+  artifactKey: Guid(a3782a52e6bca124ab6fa973b8568144) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials using Guid(a3782a52e6bca124ab6fa973b8568144) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90bf1a677f6cba6017512b58f5c3d3e4') in 0.001639 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 666.397621 seconds.
-  path: Assets/Prefabs/Farmer.prefab
-  artifactKey: Guid(3b7bc4a82f636084a8c81d716ab5b8b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Farmer.prefab using Guid(3b7bc4a82f636084a8c81d716ab5b8b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '963fcde0ebb1b29529815888153f89bb') in 0.249653 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Prefabs/PeasantDamaged.prefab
-  artifactKey: Guid(12de0102603d5bb4b980449f39a76221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/PeasantDamaged.prefab using Guid(12de0102603d5bb4b980449f39a76221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47d0517abe821b6ec74dd4b67bf87e81') in 0.043852 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 30.356587 seconds.
-  path: Assets/Scary Haunted House/prefab
-  artifactKey: Guid(9fdf0d9035701a0488ef35f09b06cad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab using Guid(9fdf0d9035701a0488ef35f09b06cad9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a1ec247974d10a8cba8e306e63144bf') in 0.005670 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.122931 seconds.
-  path: Assets/Scary Haunted House/prefab/ac.prefab
-  artifactKey: Guid(5fc260cd51631264fbae24e65fcfa1ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/ac.prefab using Guid(5fc260cd51631264fbae24e65fcfa1ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40776bc3f260d6ef48793a08d9c41bec') in 0.141853 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Scary Haunted House/prefab/table2.prefab
-  artifactKey: Guid(48367f66975aa5a41bd58f27f45a1059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/table2.prefab using Guid(48367f66975aa5a41bd58f27f45a1059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcf9e164d6566d79b68d8038c6e39153') in 0.010951 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Scary Haunted House/prefab/bridge.prefab
-  artifactKey: Guid(5ba9e94a04031f94cb78c705d8793e7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/bridge.prefab using Guid(5ba9e94a04031f94cb78c705d8793e7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '092e808a0027bb17f15a0819ae1da433') in 0.009753 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Scary Haunted House/prefab/plant001.prefab
-  artifactKey: Guid(9728fa5af70587f4eadd8ae1d9f5f73a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/plant001.prefab using Guid(9728fa5af70587f4eadd8ae1d9f5f73a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53c1131ef2ae580b6b00793c04f99b24') in 0.143807 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Scary Haunted House/prefab/boundry.prefab
-  artifactKey: Guid(f5cce43ab63554f4199998dd54aaa96f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/boundry.prefab using Guid(f5cce43ab63554f4199998dd54aaa96f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17309f10256bc4976236656cc3c580fe') in 0.009583 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000010 seconds.
-  path: Assets/Scary Haunted House/prefab/kitchen.prefab
-  artifactKey: Guid(35cc071d02da30f4fbd0cb759e54228c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/kitchen.prefab using Guid(35cc071d02da30f4fbd0cb759e54228c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b3d5eb9f99343096adfd19357cf36f1') in 0.011141 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000010 seconds.
-  path: Assets/Scary Haunted House/prefab/plant002.prefab
-  artifactKey: Guid(5e1f289797c59cb46a3d0daf53f5a6db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/plant002.prefab using Guid(5e1f289797c59cb46a3d0daf53f5a6db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49d56b08c2e6b4312f34127b48082bbc') in 0.008400 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000009 seconds.
-  path: Assets/Scary Haunted House/prefab/lights (1).prefab
-  artifactKey: Guid(c7bde6e2549968a488f088dd110a0116) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/lights (1).prefab using Guid(c7bde6e2549968a488f088dd110a0116) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f239868b200c1003df4d1283bd4fc7b9') in 0.009304 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Scary Haunted House/prefab/genrator.prefab
-  artifactKey: Guid(734fb56cf35b13547b6736bf2ed0b579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/genrator.prefab using Guid(734fb56cf35b13547b6736bf2ed0b579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6668df11c495685b0a05c8ff3a62d1f') in 0.069751 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Scary Haunted House/prefab/computer_table.prefab
-  artifactKey: Guid(bdad3631e035c0a41b57b9474ad534e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/computer_table.prefab using Guid(bdad3631e035c0a41b57b9474ad534e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f49ea8a659c7aece71181d670818383d') in 0.010382 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Scary Haunted House/prefab/main gate.prefab
-  artifactKey: Guid(22d99bba4a1725949a64beccb189c443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/main gate.prefab using Guid(22d99bba4a1725949a64beccb189c443) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d4ffafbba4e8e7f9ec88cf15e3288d0') in 0.010141 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Scary Haunted House/prefab/gates_fence.prefab
-  artifactKey: Guid(c86ccb18f7e616641bd83ad6806e0cd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/gates_fence.prefab using Guid(c86ccb18f7e616641bd83ad6806e0cd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e10854228bb42840214de7f15976fd9e') in 0.009948 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000010 seconds.
-  path: Assets/Scary Haunted House/prefab/chairs.prefab
-  artifactKey: Guid(232144cd113809f4786ab48f7772450a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/chairs.prefab using Guid(232144cd113809f4786ab48f7772450a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '685b908843e3330a43ac5d529961d92e') in 0.009952 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Scary Haunted House/prefab/fan.prefab
-  artifactKey: Guid(01ed3ba906d334045a0e7edfcf70f688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/fan.prefab using Guid(01ed3ba906d334045a0e7edfcf70f688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2c59d89d085bfb2a314d755d92632b0') in 0.009429 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Scary Haunted House/prefab/ground.prefab
-  artifactKey: Guid(67e189420d77b43418d1e9576edb1ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/ground.prefab using Guid(67e189420d77b43418d1e9576edb1ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6296242bdd21f3a4e1550f4e9f468567') in 0.008849 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.200639 seconds.
-  path: Assets/Scary Haunted House/prefab/washroom.prefab
-  artifactKey: Guid(cde30c1be6910a548bbb3f22ace5221e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scary Haunted House/prefab/washroom.prefab using Guid(cde30c1be6910a548bbb3f22ace5221e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa38c1346777f4cc59badd0fe677ebaa') in 0.011271 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 0.068225 seconds.
+  path: Assets/Models/Materials/Boot.mat
+  artifactKey: Guid(e56258dbb07f9064d879c65655c2e3fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials/Boot.mat using Guid(e56258dbb07f9064d879c65655c2e3fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '125082ee213cc459def7f59b4acfeb92') in 0.102453 seconds 
