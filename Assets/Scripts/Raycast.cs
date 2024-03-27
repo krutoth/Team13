@@ -56,7 +56,7 @@ public class Raycast : MonoBehaviour
             }
 
             // Use X on keyboard or js11 on joystick to interact with objects
-            if (Input.GetAxis("js11") != 0 || Input.GetKeyDown("js24") || Input.GetKeyDown(KeyCode.X))
+            if (Input.GetAxis("js11") != 0 || Input.GetAxis("js24") != 0 || Input.GetKeyDown(KeyCode.X))
             {
                 if (hit.collider.CompareTag("Door"))
                 {
