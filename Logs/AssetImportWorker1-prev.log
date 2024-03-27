@@ -22,7 +22,11 @@ AssetImportWorker1
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
+<<<<<<< HEAD
 49768
+=======
+50702
+>>>>>>> main
 Successfully changed project path to: /Users/Master/Documents/GitHub/Team13
 /Users/Master/Documents/GitHub/Team13
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -54,11 +58,19 @@ Successfully changed project path to: /Users/Master/Documents/GitHub/Team13
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< HEAD
 Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 4176636984 [EditorId] 4176636984 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
 Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 4176636984 [EditorId] 4176636984 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 Refreshing native plugins compatible for Editor in 52.92 ms, found 2 plugins.
+=======
+Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 814927762 [EditorId] 814927762 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [8050940992] Host "[IP] 169.254.37.204 [Port] 0 [Flags] 2 [Guid] 814927762 [EditorId] 814927762 [Version] 1048832 [Id] OSXEditor(0,naniwas-MacBook-Pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 50.63 ms, found 2 plugins.
+>>>>>>> main
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.16f1 (4016570cf34f)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -73,13 +85,21 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/MonoBleedingEdge/etc'
+<<<<<<< HEAD
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56996
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56222
+>>>>>>> main
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+<<<<<<< HEAD
 Registered in 0.000581 seconds.
+=======
+Registered in 0.000463 seconds.
+>>>>>>> main
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 [usbmuxd] Send listen message
@@ -87,6 +107,7 @@ Native extension for iOS target not found
 [usbmuxd] Attached: 1 00008110-000E04200C13801E
 Native extension for Android target not found
 Native extension for OSXStandalone target not found
+<<<<<<< HEAD
 Refreshing native plugins compatible for Editor in 56.73 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -94,11 +115,21 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (325ms)
 		BeginReloadAssembly (20ms)
+=======
+Refreshing native plugins compatible for Editor in 52.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.312 seconds
+Domain Reload Profiling:
+	ReloadAssembly (313ms)
+		BeginReloadAssembly (18ms)
+>>>>>>> main
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (0ms)
+<<<<<<< HEAD
 		EndReloadAssembly (254ms)
 			LoadAssemblies (19ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -113,19 +144,40 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (1ms)
 				ProcessInitializeOnLoadAttributes (36ms)
 				ProcessInitializeOnLoadMethodAttributes (18ms)
+=======
+		EndReloadAssembly (246ms)
+			LoadAssemblies (18ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (51ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (14ms)
+			SetupLoadedEditorAssemblies (163ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (54ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (53ms)
+				BeforeProcessingInitializeOnLoad (0ms)
+				ProcessInitializeOnLoadAttributes (36ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+>>>>>>> main
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< HEAD
 Registered in 0.001553 seconds.
+=======
+Registered in 0.001613 seconds.
+>>>>>>> main
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/Master/Documents/GitHub/Team13/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image /Users/Master/Documents/GitHub/Team13/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for OSXStandalone target not found
+<<<<<<< HEAD
 Refreshing native plugins compatible for Editor in 54.81 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
@@ -134,10 +186,21 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (675ms)
 		BeginReloadAssembly (148ms)
+=======
+Refreshing native plugins compatible for Editor in 51.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Completed reload, in  0.663 seconds
+Domain Reload Profiling:
+	ReloadAssembly (664ms)
+		BeginReloadAssembly (150ms)
+>>>>>>> main
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (2ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< HEAD
 			CreateAndSetChildDomain (117ms)
 		EndReloadAssembly (473ms)
 			LoadAssemblies (27ms)
@@ -152,6 +215,22 @@ Domain Reload Profiling:
 				RefreshPlugins (55ms)
 				BeforeProcessingInitializeOnLoad (45ms)
 				ProcessInitializeOnLoadAttributes (129ms)
+=======
+			CreateAndSetChildDomain (119ms)
+		EndReloadAssembly (458ms)
+			LoadAssemblies (26ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (139ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (28ms)
+			SetupLoadedEditorAssemblies (244ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (13ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (51ms)
+				BeforeProcessingInitializeOnLoad (44ms)
+				ProcessInitializeOnLoadAttributes (126ms)
+>>>>>>> main
 				ProcessInitializeOnLoadMethodAttributes (9ms)
 				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
@@ -161,6 +240,7 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/Tools/UnityShaderCompiler
+<<<<<<< HEAD
 Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
 Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -168,6 +248,15 @@ Unloading 4361 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 54 unused Assets / (112.3 KB). Loaded Objects now: 4804.
 Memory consumption went from 152.7 MB to 152.6 MB.
 Total: 2.140875 ms (FindLiveObjects: 0.085500 ms CreateObjectMapping: 0.042541 ms MarkObjects: 1.938125 ms  DeleteObjects: 0.074375 ms)
+=======
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4351 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 54 unused Assets / (Unknown). Loaded Objects now: 4794.
+Memory consumption went from 152.0 MB to 152.0 MB.
+Total: 2.178667 ms (FindLiveObjects: 0.082500 ms CreateObjectMapping: 0.037958 ms MarkObjects: 1.980500 ms  DeleteObjects: 0.077375 ms)
+>>>>>>> main
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -181,8 +270,51 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
+<<<<<<< HEAD
   Time since last request: 1543.289691 seconds.
   path: ProjectSettings/InputManager.asset
   artifactKey: Guid(00000000000000002000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing ProjectSettings/InputManager.asset using Guid(00000000000000002000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.505073 seconds  code(4) message(Build asset version error: projectsettings/inputmanager.asset in SourceAssetDB has modification time of '2024-03-27T05:03:55Z' while content on disk has modification time of '2024-03-27T05:04:09Z')
   ERROR: Build asset version error: projectsettings/inputmanager.asset in SourceAssetDB has modification time of '2024-03-27T05:03:55Z' while content on disk has modification time of '2024-03-27T05:04:09Z'
+=======
+  Time since last request: 10883.821752 seconds.
+  path: Assets/Models/Farmer damage.FBX
+  artifactKey: Guid(7df9f133c2fa2e947a8b98d5e400370d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Farmer damage.FBX using Guid(7df9f133c2fa2e947a8b98d5e400370d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77807f05ea3535a3009344e42ba364fd') in 0.207107 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Models/PeasantBoots.FBX
+  artifactKey: Guid(5a385f16a48a28347be8143ab180156b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/PeasantBoots.FBX using Guid(5a385f16a48a28347be8143ab180156b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe121869fd340803f6e5947ea94ed091') in 0.012804 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Models/FarmersBoots.FBX
+  artifactKey: Guid(306aca657d77ade47a5d840ef11bc96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/FarmersBoots.FBX using Guid(306aca657d77ade47a5d840ef11bc96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '875504b1b1d42fe72c87fce2f7d79c6c') in 0.012950 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.346643 seconds.
+  path: Assets/Models/Materials/Farmer.mat
+  artifactKey: Guid(833a691ed1e80c94eb231ea8b3afa1b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials/Farmer.mat using Guid(833a691ed1e80c94eb231ea8b3afa1b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21c9b257c00bda95eb2a892006c89576') in 0.053624 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Models/Materials/Peasant.mat
+  artifactKey: Guid(a5437eb57d563644aaa76155b7a2e87e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials/Peasant.mat using Guid(a5437eb57d563644aaa76155b7a2e87e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1f4b87f33c9825afe8f6e324d997277') in 0.004706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Models/Materials/FarmerDamage.mat
+  artifactKey: Guid(4f8ac62f4c9682d438f45b2f41879639) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials/FarmerDamage.mat using Guid(4f8ac62f4c9682d438f45b2f41879639) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '686cb9885b790cfc5daacee13fc5f9f2') in 0.004419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Models/Materials/No Name.mat
+  artifactKey: Guid(e977b6bbed5ea9746943eec2126ea4f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Materials/No Name.mat using Guid(e977b6bbed5ea9746943eec2126ea4f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f782c0beff405346ec6fdb838e1dd923') in 0.004147 seconds 
+>>>>>>> main
