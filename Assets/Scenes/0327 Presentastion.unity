@@ -211,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954029772337605775, guid: 48e2751f1145549d2b3ad0a259b01524, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71
+      value: 67.1
       objectReference: {fileID: 0}
     - target: {fileID: 5954029772337605775, guid: 48e2751f1145549d2b3ad0a259b01524, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3781,7 +3781,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26518
+  m_Name: pb_Mesh25232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
