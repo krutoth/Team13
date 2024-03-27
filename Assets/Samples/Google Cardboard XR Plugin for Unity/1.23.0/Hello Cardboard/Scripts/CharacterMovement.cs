@@ -25,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
         float horComp = Input.GetAxis("Horizontal");
         float vertComp = Input.GetAxis("Vertical");
 
-        if (joyStickMode)
+        if (!joyStickMode)
         {
             horComp = Input.GetAxis("Vertical");
             vertComp = Input.GetAxis("Horizontal") * -1;
