@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 148680890}
   - component: {fileID: 148680889}
   - component: {fileID: 148680884}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: TriSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 955127916}
   - component: {fileID: 955127917}
   - component: {fileID: 955127919}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Icosahedron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1199920617}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Treasure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 1490385955}
   - component: {fileID: 1490385954}
   - component: {fileID: 1490385949}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: QuadSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,10 +1052,6 @@ PrefabInstance:
     - target: {fileID: 482300, guid: 15fcd94adb15b48f7bb4a80622ae7046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 723926960, guid: 15fcd94adb15b48f7bb4a80622ae7046, type: 3}
-      propertyPath: ReticleInteractionLayerMask.m_Bits
-      value: 264
       objectReference: {fileID: 0}
     - target: {fileID: 723926960, guid: 15fcd94adb15b48f7bb4a80622ae7046, type: 3}
       propertyPath: RecticleInteractionLayerMask.m_Bits
