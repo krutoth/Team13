@@ -10,8 +10,10 @@ public class Raycast : MonoBehaviour
     public GameObject playerObject;
     public float maxDistance; // 最大射線距離
     private GameObject lastHitObject; // 追蹤上一次擊中的物體
-    public Transform leftDoor;
-    public Transform rightDoor;
+    // public Transform leftDoor;
+    // public Transform rightDoor;
+    private Transform leftDoor;
+    private Transform rightDoor;
     private bool isOpenedDoor = false;
     public Transform leftSlideDoor;
     public Transform rightSlideDoor;
@@ -58,9 +60,22 @@ public class Raycast : MonoBehaviour
             // Use X on keyboard or js11 on joystick to interact with objects
             if (Input.GetAxis("js11") != 0 || Input.GetAxis("js24") != 0 || Input.GetKeyDown(KeyCode.X))
             {
+                string gazedObjectName = hit.collider.gameObject.name;
+                GameObject temp = GameObject.Find(gazedObjectName);
+
+                // If object is a door (tagged as "Door1", "Door2", etc.)
                 if (hit.collider.CompareTag("Door"))
                 {
+                    // Play object's audio source
+                    AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    leftDoor = temp.transform.Find("Left Door").transform;
+                    rightDoor = temp.transform.Find("Right Door").transform;
+
                     RotateDoors();
+                    
                     if (isOpenedDoor)
                     {
                         hit.collider.isTrigger = true;
@@ -72,7 +87,16 @@ public class Raycast : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Slide Door"))
                 {
+                    // Play object's audio source
+                    AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    leftSlideDoor = temp.transform.Find("Left Slide Door").transform;
+                    rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
+
                     SlideDoors();
+
                     if (isSlidedDoor)
                     {
                         hit.collider.isTrigger = true;
@@ -120,6 +144,10 @@ public class Raycast : MonoBehaviour
             rightDoor.localRotation *= Quaternion.Euler(-rightDoorRotate);
             isOpenedDoor = false;
         }
+
+        // start an audio source
+        // AudioSource audioSource = GetComponent<AudioSource>();
+        // audioSource.Play();
     }
     void SlideDoors()
     {
