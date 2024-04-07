@@ -1990,7 +1990,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000010158195270}
-  - component: {fileID: 164998646137007450}
+  - component: {fileID: 4567144408242507854}
+  - component: {fileID: 2568199066800575057}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -2016,7 +2017,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &164998646137007450
+--- !u!114 &4567144408242507854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011807616694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701ab2146163f7d48ba334bdf1d54790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
+  vrGroup: {fileID: 0}
+  standardGroup: {fileID: 0}
+  vrInputModule: {fileID: 0}
+  standardInputModule: {fileID: 0}
+  dragRate: 0.2
+--- !u!114 &2568199066800575057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
