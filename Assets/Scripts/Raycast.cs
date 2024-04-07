@@ -55,7 +55,10 @@ public class Raycast : MonoBehaviour
                 string objectName = hit.collider.gameObject.name;
                 if (objectName == "Resume")
                 {
-                    if (Input.GetAxis("js11") != 0)
+                    // Use Y Button
+                    // Kuei-Yu: js11
+                    // Ryan: js20
+                    if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         menu.SetActive(false);
                         CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
@@ -76,8 +79,10 @@ public class Raycast : MonoBehaviour
                 outline.OutlineWidth = 5f;
             }
 
-            // Use X on keyboard or js11 on joystick to interact with objects
-            if (Input.GetAxis("js11") != 0 || Input.GetAxis("js24") != 0 || Input.GetKeyDown(KeyCode.X))
+            // Use Y Button
+            // Kuei-Yu: js11
+            // Ryan: js20
+            if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
             {
                 string gazedObjectName = hit.collider.gameObject.name;
                 GameObject temp = GameObject.Find(gazedObjectName);
@@ -139,7 +144,9 @@ public class Raycast : MonoBehaviour
             lastHitObject = null;
         }
         // B Button on joystick to open menu
-        if ((Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("15") != 0) && !menu.activeSelf)
+        // Kuei-Yu: js7
+        // Ryan: js15
+        if ((Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
         {
             menu.SetActive(true);
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
