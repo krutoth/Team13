@@ -138,7 +138,8 @@ public class Raycast : MonoBehaviour
             RestoreOriginalColor();
             lastHitObject = null;
         }
-        if (Input.GetAxisRaw("js7") != 0 && !menu.activeSelf)
+        // B Button on joystick to open menu
+        if ((Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("15") != 0) && !menu.activeSelf)
         {
             menu.SetActive(true);
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
