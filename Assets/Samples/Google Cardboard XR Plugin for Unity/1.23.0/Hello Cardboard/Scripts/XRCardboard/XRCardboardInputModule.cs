@@ -25,6 +25,9 @@ public class XRCardboardInputModule : PointerInputModule
     float currentTargetClickTime = float.MaxValue;
     bool hovering;
 
+    // Keep track of the currently outlined object
+    private GameObject outlinedObject = null;
+
     public override void Process()
     {
         HandleLook();
@@ -46,6 +49,27 @@ public class XRCardboardInputModule : PointerInputModule
         raycastResults = raycastResults.OrderBy(r => !r.module.GetComponent<GraphicRaycaster>()).ToList();
         pointerEventData.pointerCurrentRaycast = FindFirstRaycast(raycastResults);
         ProcessMove(pointerEventData);
+
+        // Check if the current raycast hits an object with an Outline component
+        GameObject hitObject = pointerEventData.pointerCurrentRaycast.gameObject;
+        if (hitObject != outlinedObject)
+        {
+            // Disable outline on the previously outlined object
+            if (outlinedObject != null)
+            {
+                Outline outline = outlinedObject.GetComponent<Outline>();
+                if (outline != null) outline.enabled = false;
+            }
+
+            outlinedObject = hitObject;
+
+            // Enable outline on the new object
+            if (outlinedObject != null)
+            {
+                Outline outline = outlinedObject.GetComponent<Outline>();
+                if (outline != null) outline.enabled = true;
+            }
+        }
     }
 
     void HandleSelection()
@@ -91,5 +115,13 @@ public class XRCardboardInputModule : PointerInputModule
             return;
         hovering = false;
         onEndHover?.Invoke();
+
+        // Disable outline when no longer hovering
+        if (outlinedObject != null)
+        {
+            Outline outline = outlinedObject.GetComponent<Outline>();
+            if (outline != null) outline.enabled = false;
+            outlinedObject = null;
+        }
     }
 }

@@ -4,15 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - object
-  - context_menu
-=======
   - Ground
   - Door
   - Slide Door
   - Hide Place
->>>>>>> main
+  - Button
   layers:
   - Default
   - TransparentFX
