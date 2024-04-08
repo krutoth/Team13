@@ -19,6 +19,7 @@ public class Raycast : MonoBehaviour
     // public Transform rightSlideDoor;
     private Transform leftSlideDoor;
     private Transform rightSlideDoor;
+    private GameObject hider;
     private bool isSlidedDoor = false;
     private bool isHidden = false;
     private Vector3 lastPosition;
@@ -135,6 +136,17 @@ public class Raycast : MonoBehaviour
                     Vector3 bedPosition = hit.collider.gameObject.transform.position;
                     Hide(bedPosition);
                 }
+                else if (hit.collider.CompareTag("Hider"))
+                {
+                    // Play object's audio source
+                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    // audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    hider = temp;
+
+                    Hider();
+                }
             }
         }
         else
@@ -217,6 +229,18 @@ public class Raycast : MonoBehaviour
             playerObject.transform.position = lastPosition;
             isHidden = false;
         }
+    }
+
+    void Hider()
+    {
+        // Disable mesh renderer of hider
+        hider.GetComponent<MeshRenderer>().enabled = false;
+
+        // Disable collider of hider
+        hider.GetComponent<Collider>().enabled = false;
+
+        // Disable Rigidbody of hider
+        hider.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     void DrawRay(Vector3 start, Vector3 end)
