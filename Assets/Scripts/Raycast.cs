@@ -15,6 +15,7 @@ public class Raycast : MonoBehaviour
     private Transform leftSlideDoor;
     private Transform rightSlideDoor;
     private GameObject hider;
+    private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
     public GameObject menu;
@@ -124,6 +125,18 @@ public class Raycast : MonoBehaviour
 
                     Hider();
                 }
+                else if (hit.collider.CompareTag("Seeker"))
+                {
+                    // Play object's audio source
+                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    // audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    seeker = temp;
+
+                    // StartCoroutine(Seeker());
+                    Seeker();
+                }
             }
         }
         else
@@ -217,6 +230,24 @@ public class Raycast : MonoBehaviour
 
         // Disable Rigidbody of hider
         hider.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    void Seeker()
+    {
+        // test disable mesh renderer of seeker
+        // seeker.GetComponent<MeshRenderer>().enabled = false;
+
+        // Temporarily freeze movement of seeker for 5 seconds
+        // disable MoveToPosition script
+        seeker.GetComponent<MoveToPosition>().enabled = false;
+        StartCoroutine(waiter());
+        seeker.GetComponent<MoveToPosition>().enabled = true;
+        
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(5);
     }
 
     void DrawRay(Vector3 start, Vector3 end)

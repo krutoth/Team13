@@ -10,6 +10,7 @@ TagManager:
   - Hide Place
   - Button
   - Hider
+  - Seeker
   layers:
   - Default
   - TransparentFX
