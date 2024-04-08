@@ -455,6 +455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2143243995}
     m_Modifications:
+    - target: {fileID: 6746964023194838616, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6746964023293654550, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -686,6 +690,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1341154524655289306, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341154525568194896, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1341845562662991843, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
       propertyPath: target
       value: 
