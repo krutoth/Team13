@@ -17,7 +17,6 @@ public class Raycast : MonoBehaviour
     private Transform leftSlideDoor;
     private Transform rightSlideDoor;
     private GameObject hider;
-    private bool isSlidedDoor = false;
     private bool isHidden = false;
     private Vector3 lastPosition;
     public GameObject menu;
@@ -63,7 +62,10 @@ public class Raycast : MonoBehaviour
                 }
                 else if(objectName == "Exit")
                 {
-                    Application.Quit();
+                    if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        Application.Quit();
+                    }
                 }
             }
 
@@ -107,15 +109,6 @@ public class Raycast : MonoBehaviour
                     rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
 
                     SlideDoors();
-
-                    if (isSlidedDoor)
-                    {
-                        hit.collider.isTrigger = true;
-                    }
-                    else
-                    {
-                        hit.collider.isTrigger = false;
-                    }
                 }
                 else if (hit.collider.CompareTag("Hide Place"))
                 {
@@ -181,17 +174,15 @@ public class Raycast : MonoBehaviour
     {
         Vector3 leftDoorMove = new Vector3(-2, 0, 0);
         Vector3 rightDoorMove = new Vector3(2, 0, 0);
-        if (!isSlidedDoor)
+        if (leftSlideDoor.localPosition == new Vector3(-2, 0, 0))
         {
             leftSlideDoor.localPosition += leftDoorMove;
             rightSlideDoor.localPosition += rightDoorMove;
-            isSlidedDoor = true;
         }
         else
         {
             leftSlideDoor.localPosition -= leftDoorMove;
             rightSlideDoor.localPosition -= rightDoorMove;
-            isSlidedDoor = false;
         }
     }
 
