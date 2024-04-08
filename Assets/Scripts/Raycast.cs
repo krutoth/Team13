@@ -12,8 +12,6 @@ public class Raycast : MonoBehaviour
     private GameObject lastHitObject;
     private Transform leftDoor;
     private Transform rightDoor;
-    // public Transform leftSlideDoor;
-    // public Transform rightSlideDoor;
     private Transform leftSlideDoor;
     private Transform rightSlideDoor;
     private GameObject hider;
