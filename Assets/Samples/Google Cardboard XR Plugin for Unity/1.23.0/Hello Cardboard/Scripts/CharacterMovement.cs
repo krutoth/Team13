@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : NetworkBehaviour //MonoBehaviour
 {
     CharacterController charCntrl;
     [Tooltip("The speed at which the character will move.")]
@@ -13,13 +14,13 @@ public class CharacterMovement : MonoBehaviour
     public bool joyStickMode;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         charCntrl = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Get horizontal and Vertical movements
         float horComp = Input.GetAxis("Horizontal");
