@@ -139,6 +139,9 @@ public class Raycast : MonoBehaviour
         // Ryan: js15
         if ((Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
         {
+            Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+            menu.transform.position = menuPosition;
+            menu.transform.rotation = Camera.main.transform.rotation;
             menu.SetActive(true);
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
