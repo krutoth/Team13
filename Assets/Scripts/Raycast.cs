@@ -10,11 +10,8 @@ public class Raycast : MonoBehaviour
     public GameObject playerObject;
     public float maxDistance;
     private GameObject lastHitObject;
-    // public Transform leftDoor;
-    // public Transform rightDoor;
     private Transform leftDoor;
     private Transform rightDoor;
-    private bool isOpenedDoor = false;
     // public Transform leftSlideDoor;
     // public Transform rightSlideDoor;
     private Transform leftSlideDoor;
@@ -29,14 +26,12 @@ public class Raycast : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         mainCamera = Camera.main;
 
-        // 設定射線寬度
         lineRenderer.startWidth = 0.001f;
         lineRenderer.endWidth = 0.001f;
     }
 
     void Update()
     {
-        // 計算射線起點，將其設定在相機下方位置
         Vector3 rayOrigin = mainCamera.transform.position - mainCamera.transform.up * 0.025f;
         Ray ray = new Ray(rayOrigin, mainCamera.transform.forward);
 
@@ -94,15 +89,6 @@ public class Raycast : MonoBehaviour
                     rightDoor = temp.transform.Find("Right Door").transform;
 
                     RotateDoors();
-                    
-                    if (isOpenedDoor)
-                    {
-                        hit.collider.isTrigger = true;
-                    }
-                    else
-                    {
-                        hit.collider.isTrigger = false;
-                    }
                 }
                 else if (hit.collider.CompareTag("Slide Door"))
                 {
@@ -152,13 +138,12 @@ public class Raycast : MonoBehaviour
         Vector3 rightDoorMove = new Vector3(1, 0, 1);
         Vector3 leftDoorRotate = new Vector3(0, 90, 0);
         Vector3 rightDoorRotate = new Vector3(0, -90, 0);
-        if (!isOpenedDoor)
+        if (leftDoor.localRotation == Quaternion.Euler(0, 0, 0))
         {
             leftDoor.localPosition += leftDoorMove;
             leftDoor.localRotation *= Quaternion.Euler(leftDoorRotate);
             rightDoor.localPosition += rightDoorMove;
             rightDoor.localRotation *= Quaternion.Euler(rightDoorRotate);
-            isOpenedDoor = true;
         }
         else
         {
@@ -166,7 +151,6 @@ public class Raycast : MonoBehaviour
             leftDoor.localRotation *= Quaternion.Euler(-leftDoorRotate);
             rightDoor.localPosition -= rightDoorMove;
             rightDoor.localRotation *= Quaternion.Euler(-rightDoorRotate);
-            isOpenedDoor = false;
         }
 
         // start an audio source
