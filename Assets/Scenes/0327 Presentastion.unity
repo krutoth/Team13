@@ -4752,6 +4752,10 @@ PrefabInstance:
       value: Seeker
       objectReference: {fileID: 0}
     - target: {fileID: 7710586820478590682, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710586820478590682, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
       propertyPath: m_TagString
       value: Seeker
       objectReference: {fileID: 0}
