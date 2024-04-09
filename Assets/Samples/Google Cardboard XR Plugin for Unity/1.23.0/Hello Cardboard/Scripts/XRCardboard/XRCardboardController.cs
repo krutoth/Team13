@@ -35,7 +35,7 @@ public class XRCardboardController : NetworkBehaviour //MonoBehaviour
         bool vrActive;
 #endif
 
-    void Awake()
+    private void Awake()
     {
         cam = cameraTransform.GetComponent<Camera>();
         poseDriver = cameraTransform.GetComponent<TrackedPoseDriver>();
@@ -43,17 +43,25 @@ public class XRCardboardController : NetworkBehaviour //MonoBehaviour
         initialRotation = cameraTransform.rotation;
     }
 
-    void Start()
+    private void Start()
     {
+        if (!IsOwner)
+        {
+            cam.enabled = false; // Disable camera if not the owner
+        }
 #if UNITY_EDITOR
-            SetObjects(vrActive);
+        SetObjects(vrActive);
 #else
-        SetObjects(UnityEngine.XR.XRSettings.enabled);
+        if (IsOwner) // Only set objects for the owner
+        {
+            SetObjects(UnityEngine.XR.XRSettings.enabled);
+        }
 #endif
     }
 
-    void Update()
+    private void Update()
     {
+        if (!IsOwner) return;
 #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.Escape))
 #else

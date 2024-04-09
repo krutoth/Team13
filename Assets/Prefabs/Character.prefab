@@ -220,8 +220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpHeight: 2
   cameraObj: {fileID: 6819412945857669626}
   joyStickMode: 1
+  gravityValue: -30
 --- !u!54 &4288121131830663347
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,7 +292,7 @@ MonoBehaviour:
   SyncScaleY: 1
   SyncScaleZ: 1
   PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
+  RotAngleThreshold: 0.001
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
@@ -367,6 +369,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f744a935de53dd14994e1c7c5348c54a, type: 3}
+--- !u!1 &5234196951161802483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f744a935de53dd14994e1c7c5348c54a, type: 3}
+  m_PrefabInstance: {fileID: 4288121132229449722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2687676581760559834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5234196951161802483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a780670d4e4644fbcac1e6b7b64b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!4 &9149277862907903200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f744a935de53dd14994e1c7c5348c54a, type: 3}
@@ -438,6 +471,10 @@ PrefabInstance:
     - target: {fileID: 7287137019966064018, guid: 186741bf17cbb0e4fa3ef06daa1f190f, type: 3}
       propertyPath: m_Name
       value: XRCardboardRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287137019966064018, guid: 186741bf17cbb0e4fa3ef06daa1f190f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7287137020585607021, guid: 186741bf17cbb0e4fa3ef06daa1f190f, type: 3}
       propertyPath: m_Enabled
