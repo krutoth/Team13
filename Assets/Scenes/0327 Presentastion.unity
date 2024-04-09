@@ -3875,6 +3875,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3771948707769748877}
     m_Modifications:
+    - target: {fileID: 6746964022776144260, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6746964023194838616, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -3938,6 +3942,10 @@ PrefabInstance:
     - target: {fileID: 6746964023293654556, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
       propertyPath: m_Name
       value: Closet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746964023543644662, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
@@ -10241,7 +10249,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh79856
+  m_Name: pb_Mesh123620
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
