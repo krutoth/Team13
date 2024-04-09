@@ -54,7 +54,8 @@ public class Raycast : MonoBehaviour
                     // Use Y Button
                     // Kuei-Yu: js11
                     // Ryan: js20
-                    if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    // Android: js0
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         menu.SetActive(false);
                         CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
@@ -63,7 +64,7 @@ public class Raycast : MonoBehaviour
                 }
                 else if(objectName == "Exit")
                 {
-                    if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         Application.Quit();
                     }
@@ -81,7 +82,8 @@ public class Raycast : MonoBehaviour
             // Use Y Button
             // Kuei-Yu: js11
             // Ryan: js20
-            if (Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+            // Android: js0
+            if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
             {
                 string gazedObjectName = hit.collider.gameObject.name;
                 GameObject temp = GameObject.Find(gazedObjectName);
@@ -150,7 +152,8 @@ public class Raycast : MonoBehaviour
         // B Button on joystick to open menu
         // Kuei-Yu: js7
         // Ryan: js15
-        if ((Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
+        // Android: js2
+        if ((Input.GetAxisRaw("js2") != 0 || Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
         {
             Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
             menu.transform.position = menuPosition;
