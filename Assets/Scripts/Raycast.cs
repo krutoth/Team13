@@ -8,47 +8,69 @@ public class Raycast : MonoBehaviour
     public LineRenderer lineRenderer;
     public Camera mainCamera;
     public GameObject playerObject;
-    public float maxDistance; // 最大射線距離
-    private GameObject lastHitObject; // 追蹤上一次擊中的物體
-    // public Transform leftDoor;
-    // public Transform rightDoor;
+    public float maxDistance;
+    private GameObject lastHitObject;
     private Transform leftDoor;
     private Transform rightDoor;
-    private bool isOpenedDoor = false;
-    public Transform leftSlideDoor;
-    public Transform rightSlideDoor;
-    private bool isSlidedDoor = false;
+    // public Transform leftSlideDoor;
+    // public Transform rightSlideDoor;
+    private Transform leftSlideDoor;
+    private Transform rightSlideDoor;
+    private GameObject hider;
+    private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
+    public GameObject menu;
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         mainCamera = Camera.main;
 
-        // 設定射線寬度
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
+        lineRenderer.startWidth = 0.001f;
+        lineRenderer.endWidth = 0.001f;
     }
 
     void Update()
     {
-        // 計算射線起點，將其設定在相機下方位置
-        Vector3 rayOrigin = mainCamera.transform.position - mainCamera.transform.up * 0.5f;
+        Vector3 rayOrigin = mainCamera.transform.position - mainCamera.transform.up * 0.025f;
         Ray ray = new Ray(rayOrigin, mainCamera.transform.forward);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
             DrawRay(ray.origin, hit.point);
-            // 如果擊中的物體與上一次不同，則恢復
             if (lastHitObject != hit.collider.gameObject)
             {
                 RestoreOriginalColor();
                 lastHitObject = hit.collider.gameObject;
             }
 
-            // 更改擊中物體的外框
+            if (hit.collider.CompareTag("Button"))
+            {
+                string objectName = hit.collider.gameObject.name;
+                if (objectName == "Resume")
+                {
+                    // Use Y Button
+                    // Kuei-Yu: js11
+                    // Ryan: js20
+                    // Android: js0
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        menu.SetActive(false);
+                        CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+                        targetScript.enabled = true;
+                    }
+                }
+                else if(objectName == "Exit")
+                {
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        Application.Quit();
+                    }
+                }
+            }
+
             if (!hit.collider.gameObject.GetComponent<Outline>() && !hit.collider.CompareTag("Ground"))
             {
                 var outline = hit.collider.gameObject.AddComponent<Outline>();
@@ -57,8 +79,11 @@ public class Raycast : MonoBehaviour
                 outline.OutlineWidth = 5f;
             }
 
-            // Use X on keyboard or js11 on joystick to interact with objects
-            if (Input.GetAxis("js11") != 0 || Input.GetAxis("js24") != 0 || Input.GetKeyDown(KeyCode.X))
+            // Use Y Button
+            // Kuei-Yu: js11
+            // Ryan: js20
+            // Android: js0
+            if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
             {
                 string gazedObjectName = hit.collider.gameObject.name;
                 GameObject temp = GameObject.Find(gazedObjectName);
@@ -75,15 +100,6 @@ public class Raycast : MonoBehaviour
                     rightDoor = temp.transform.Find("Right Door").transform;
 
                     RotateDoors();
-                    
-                    if (isOpenedDoor)
-                    {
-                        hit.collider.isTrigger = true;
-                    }
-                    else
-                    {
-                        hit.collider.isTrigger = false;
-                    }
                 }
                 else if (hit.collider.CompareTag("Slide Door"))
                 {
@@ -96,29 +112,55 @@ public class Raycast : MonoBehaviour
                     rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
 
                     SlideDoors();
-
-                    if (isSlidedDoor)
-                    {
-                        hit.collider.isTrigger = true;
-                    }
-                    else
-                    {
-                        hit.collider.isTrigger = false;
-                    }
                 }
                 else if (hit.collider.CompareTag("Hide Place"))
                 {
                     Vector3 bedPosition = hit.collider.gameObject.transform.position;
                     Hide(bedPosition);
                 }
+                else if (hit.collider.CompareTag("Hider"))
+                {
+                    // Play object's audio source
+                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    // audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    hider = temp;
+
+                    Hider();
+                }
+                else if (hit.collider.CompareTag("Seeker"))
+                {
+                    // Play object's audio source
+                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    // audioSourceToUse.Play();
+
+                    // Modify transform to gazed object
+                    seeker = temp;
+
+                    // StartCoroutine(Seeker());
+                    Seeker();
+                }
             }
         }
         else
         {
             DrawRay(ray.origin, ray.origin + ray.direction * maxDistance);
-            // 如果射線未擊中任何物體，則恢復
             RestoreOriginalColor();
             lastHitObject = null;
+        }
+        // B Button on joystick to open menu
+        // Kuei-Yu: js7
+        // Ryan: js15
+        // Android: js2
+        if ((Input.GetAxisRaw("js2") != 0 || Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
+        {
+            Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+            menu.transform.position = menuPosition;
+            menu.transform.rotation = Camera.main.transform.rotation;
+            menu.SetActive(true);
+            CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+            targetScript.enabled = false;
         }
     }
 
@@ -128,13 +170,12 @@ public class Raycast : MonoBehaviour
         Vector3 rightDoorMove = new Vector3(1, 0, 1);
         Vector3 leftDoorRotate = new Vector3(0, 90, 0);
         Vector3 rightDoorRotate = new Vector3(0, -90, 0);
-        if (!isOpenedDoor)
+        if (leftDoor.localRotation == Quaternion.Euler(0, 0, 0))
         {
             leftDoor.localPosition += leftDoorMove;
             leftDoor.localRotation *= Quaternion.Euler(leftDoorRotate);
             rightDoor.localPosition += rightDoorMove;
             rightDoor.localRotation *= Quaternion.Euler(rightDoorRotate);
-            isOpenedDoor = true;
         }
         else
         {
@@ -142,7 +183,6 @@ public class Raycast : MonoBehaviour
             leftDoor.localRotation *= Quaternion.Euler(-leftDoorRotate);
             rightDoor.localPosition -= rightDoorMove;
             rightDoor.localRotation *= Quaternion.Euler(-rightDoorRotate);
-            isOpenedDoor = false;
         }
 
         // start an audio source
@@ -153,17 +193,15 @@ public class Raycast : MonoBehaviour
     {
         Vector3 leftDoorMove = new Vector3(-2, 0, 0);
         Vector3 rightDoorMove = new Vector3(2, 0, 0);
-        if (!isSlidedDoor)
+        if (leftSlideDoor.localPosition == new Vector3(-2, 0, 0))
         {
             leftSlideDoor.localPosition += leftDoorMove;
             rightSlideDoor.localPosition += rightDoorMove;
-            isSlidedDoor = true;
         }
         else
         {
             leftSlideDoor.localPosition -= leftDoorMove;
             rightSlideDoor.localPosition -= rightDoorMove;
-            isSlidedDoor = false;
         }
     }
 
@@ -187,15 +225,43 @@ public class Raycast : MonoBehaviour
         }
     }
 
+    void Hider()
+    {
+        // Disable mesh renderer of hider
+        hider.GetComponent<MeshRenderer>().enabled = false;
+
+        // Disable collider of hider
+        hider.GetComponent<Collider>().enabled = false;
+
+        // Disable Rigidbody of hider
+        hider.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    void Seeker()
+    {
+        // test disable mesh renderer of seeker
+        // seeker.GetComponent<MeshRenderer>().enabled = false;
+
+        // Temporarily freeze movement of seeker for 5 seconds
+        // disable MoveToPosition script
+        seeker.GetComponent<MoveToPosition>().enabled = false;
+        StartCoroutine(waiter());
+        seeker.GetComponent<MoveToPosition>().enabled = true;
+        
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
     void DrawRay(Vector3 start, Vector3 end)
     {
-        // 設定射線起點和終點
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
     }
 
-    // 恢復
     private void RestoreOriginalColor()
     {
         if (lastHitObject != null)
