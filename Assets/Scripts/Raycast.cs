@@ -76,7 +76,7 @@ public class Raycast : MonoBehaviour
                 var outline = hit.collider.gameObject.AddComponent<Outline>();
                 outline.OutlineMode = Outline.Mode.OutlineAll;
                 outline.OutlineColor = Color.yellow;
-                outline.OutlineWidth = 5f;
+                outline.OutlineWidth = 10f;
             }
 
             // Use Y Button
@@ -227,14 +227,8 @@ public class Raycast : MonoBehaviour
 
     void Hider()
     {
-        // Disable mesh renderer of hider
-        hider.GetComponent<MeshRenderer>().enabled = false;
-
-        // Disable collider of hider
-        hider.GetComponent<Collider>().enabled = false;
-
-        // Disable Rigidbody of hider
-        hider.GetComponent<Rigidbody>().isKinematic = true;
+        // Disable the hider
+        hider.SetActive(false);
     }
 
     void Seeker()
@@ -244,15 +238,15 @@ public class Raycast : MonoBehaviour
 
         // Temporarily freeze movement of seeker for 5 seconds
         // disable MoveToPosition script
-        seeker.GetComponent<MoveToPosition>().enabled = false;
         StartCoroutine(waiter());
-        seeker.GetComponent<MoveToPosition>().enabled = true;
         
     }
 
     IEnumerator waiter()
     {
+        seeker.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         yield return new WaitForSeconds(5);
+        seeker.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
     }
 
     void DrawRay(Vector3 start, Vector3 end)
