@@ -11,17 +11,14 @@ public class Raycast : MonoBehaviour
     public float maxDistance;
     private GameObject lastHitObject;
     private Transform Door;
+    private Transform leftDoor;
+    private Transform rightDoor;
     private Transform SlideDoor;
     private GameObject hider;
     private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
     public GameObject menu;
-    // Test_House
-    /*private Transform leftDoor;
-    private Transform rightDoor;
-    private Transform leftSlideDoor;
-    private Transform rightSlideDoor;*/
 
     void Start()
     {
@@ -89,34 +86,40 @@ public class Raycast : MonoBehaviour
                 string gazedObjectName = hit.collider.gameObject.name;
                 GameObject temp = GameObject.Find(gazedObjectName);
 
-                // If object is a door (tagged as "Door1", "Door2", etc.)
+                // If object is a door (tagged as "Door")
                 if (hit.collider.CompareTag("Door"))
                 {
                     // Play object's audio source
                     AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    if(audioSourceToUse)
+                    if (audioSourceToUse)
                     {
                         audioSourceToUse.Play();
                     }
 
-                    // Modify transform to gazed object in Test_House
-                    // leftDoor = temp.transform.Find("Left Door").transform;
-                    // rightDoor = temp.transform.Find("Right Door").transform;
                     Door = temp.transform.Find("Door").transform;
                     RotateDoors();
+                }
+                else if (hit.collider.CompareTag("Main Door"))
+                {
+                    AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
+                    if (audioSourceToUse)
+                    {
+                        audioSourceToUse.Play();
+                    }
+
+                    leftDoor = temp.transform.Find("Left Door").transform;
+                    rightDoor = temp.transform.Find("Right Door").transform;
+                    MainDoors();
                 }
                 else if (hit.collider.CompareTag("Slide Door"))
                 {
                     // Play object's audio source
                     AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    if(audioSourceToUse)
+                    if (audioSourceToUse)
                     {
                         audioSourceToUse.Play();
                     }
 
-                    // Modify transform to gazed object in Test_House
-                    // leftSlideDoor = temp.transform.Find("Left Slide Door").transform;
-                    // rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
                     SlideDoor = temp.transform.Find("Slide Door").transform;
 
                     SlideDoors();
@@ -174,25 +177,6 @@ public class Raycast : MonoBehaviour
 
     void RotateDoors()
     {
-        // Move and rotate doors in Test_House
-        /*Vector3 leftDoorMove = new Vector3(-1, 0, 1);
-        Vector3 rightDoorMove = new Vector3(1, 0, 1);
-        Vector3 leftDoorRotate = new Vector3(0, 90, 0);
-        Vector3 rightDoorRotate = new Vector3(0, -90, 0);
-        if (leftDoor.localRotation == Quaternion.Euler(0, 0, 0))
-        {
-            leftDoor.localPosition += leftDoorMove;
-            leftDoor.localRotation *= Quaternion.Euler(leftDoorRotate);
-            rightDoor.localPosition += rightDoorMove;
-            rightDoor.localRotation *= Quaternion.Euler(rightDoorRotate);
-        }
-        else
-        {
-            leftDoor.localPosition -= leftDoorMove;
-            leftDoor.localRotation *= Quaternion.Euler(-leftDoorRotate);
-            rightDoor.localPosition -= rightDoorMove;
-            rightDoor.localRotation *= Quaternion.Euler(-rightDoorRotate);
-        }*/
         Vector3 DoorRotate = new Vector3(0, 0, 90);
         if (Door.localRotation == Quaternion.Euler(-90, 0, 0))
         {
@@ -207,21 +191,28 @@ public class Raycast : MonoBehaviour
         // AudioSource audioSource = GetComponent<AudioSource>();
         // audioSource.Play();
     }
-    void SlideDoors()
+
+    void MainDoors()
     {
-        // Slide doors in Test_House
-        /*Vector3 leftDoorMove = new Vector3(-2, 0, 0);
-        Vector3 rightDoorMove = new Vector3(2, 0, 0);
-        if (leftSlideDoor.localPosition == new Vector3(-2, 0, 0))
+        Vector3 DoorRotate = new Vector3(0, 0, 90);
+        if (leftDoor.localRotation == Quaternion.Euler(-90, 0, 0))
         {
-            leftSlideDoor.localPosition += leftDoorMove;
-            rightSlideDoor.localPosition += rightDoorMove;
+            leftDoor.localRotation *= Quaternion.Euler(-DoorRotate);
+            rightDoor.localRotation *= Quaternion.Euler(DoorRotate);
         }
         else
         {
-            leftSlideDoor.localPosition -= leftDoorMove;
-            rightSlideDoor.localPosition -= rightDoorMove;
-        }*/
+            leftDoor.localRotation *= Quaternion.Euler(DoorRotate);
+            rightDoor.localRotation *= Quaternion.Euler(-DoorRotate);
+        }
+
+        // start an audio source
+        // AudioSource audioSource = GetComponent<AudioSource>();
+        // audioSource.Play();
+    }
+
+    void SlideDoors()
+    {
         Vector3 DoorMove = new Vector3(0, 0, 2);
         if (SlideDoor.localPosition == new Vector3(0, 0, 0))
         {

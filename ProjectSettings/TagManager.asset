@@ -11,6 +11,7 @@ TagManager:
   - Button
   - Hider
   - Seeker
+  - Main Door
   layers:
   - Default
   - TransparentFX
