@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/0327 Presentastion.unity
+    path: Assets/Scenes/0327 Presentastion/0327 Presentastion.unity
     guid: 67397e858e46b4dbf95c20d3932bb565
   - enabled: 1
     path: Assets/Scenes/MainGame.unity

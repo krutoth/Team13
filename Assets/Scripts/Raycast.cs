@@ -10,15 +10,18 @@ public class Raycast : MonoBehaviour
     public GameObject playerObject;
     public float maxDistance;
     private GameObject lastHitObject;
-    private Transform leftDoor;
-    private Transform rightDoor;
-    private Transform leftSlideDoor;
-    private Transform rightSlideDoor;
+    private Transform Door;
+    private Transform SlideDoor;
     private GameObject hider;
     private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
     public GameObject menu;
+    // Test_House
+    /*private Transform leftDoor;
+    private Transform rightDoor;
+    private Transform leftSlideDoor;
+    private Transform rightSlideDoor;*/
 
     void Start()
     {
@@ -60,7 +63,7 @@ public class Raycast : MonoBehaviour
                         targetScript.enabled = true;
                     }
                 }
-                else if(objectName == "Exit")
+                else if (objectName == "Exit")
                 {
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
@@ -69,7 +72,7 @@ public class Raycast : MonoBehaviour
                 }
             }
 
-            if (!hit.collider.gameObject.GetComponent<Outline>() && !hit.collider.CompareTag("Ground"))
+            if (!hit.collider.gameObject.GetComponent<Outline>() && !hit.collider.CompareTag("Ground") && !hit.collider.CompareTag("Untagged"))
             {
                 var outline = hit.collider.gameObject.AddComponent<Outline>();
                 outline.OutlineMode = Outline.Mode.OutlineAll;
@@ -91,23 +94,30 @@ public class Raycast : MonoBehaviour
                 {
                     // Play object's audio source
                     AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    audioSourceToUse.Play();
+                    if(audioSourceToUse)
+                    {
+                        audioSourceToUse.Play();
+                    }
 
-                    // Modify transform to gazed object
-                    leftDoor = temp.transform.Find("Left Door").transform;
-                    rightDoor = temp.transform.Find("Right Door").transform;
-
+                    // Modify transform to gazed object in Test_House
+                    // leftDoor = temp.transform.Find("Left Door").transform;
+                    // rightDoor = temp.transform.Find("Right Door").transform;
+                    Door = temp.transform.Find("Door").transform;
                     RotateDoors();
                 }
                 else if (hit.collider.CompareTag("Slide Door"))
                 {
                     // Play object's audio source
                     AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    audioSourceToUse.Play();
+                    if(audioSourceToUse)
+                    {
+                        audioSourceToUse.Play();
+                    }
 
-                    // Modify transform to gazed object
-                    leftSlideDoor = temp.transform.Find("Left Slide Door").transform;
-                    rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
+                    // Modify transform to gazed object in Test_House
+                    // leftSlideDoor = temp.transform.Find("Left Slide Door").transform;
+                    // rightSlideDoor = temp.transform.Find("Right Slide Door").transform;
+                    SlideDoor = temp.transform.Find("Slide Door").transform;
 
                     SlideDoors();
                 }
@@ -164,7 +174,8 @@ public class Raycast : MonoBehaviour
 
     void RotateDoors()
     {
-        Vector3 leftDoorMove = new Vector3(-1, 0, 1);
+        // Move and rotate doors in Test_House
+        /*Vector3 leftDoorMove = new Vector3(-1, 0, 1);
         Vector3 rightDoorMove = new Vector3(1, 0, 1);
         Vector3 leftDoorRotate = new Vector3(0, 90, 0);
         Vector3 rightDoorRotate = new Vector3(0, -90, 0);
@@ -181,6 +192,15 @@ public class Raycast : MonoBehaviour
             leftDoor.localRotation *= Quaternion.Euler(-leftDoorRotate);
             rightDoor.localPosition -= rightDoorMove;
             rightDoor.localRotation *= Quaternion.Euler(-rightDoorRotate);
+        }*/
+        Vector3 DoorRotate = new Vector3(0, 0, 90);
+        if (Door.localRotation == Quaternion.Euler(-90, 0, 0))
+        {
+            Door.localRotation *= Quaternion.Euler(DoorRotate);
+        }
+        else
+        {
+            Door.localRotation *= Quaternion.Euler(-DoorRotate);
         }
 
         // start an audio source
@@ -189,7 +209,8 @@ public class Raycast : MonoBehaviour
     }
     void SlideDoors()
     {
-        Vector3 leftDoorMove = new Vector3(-2, 0, 0);
+        // Slide doors in Test_House
+        /*Vector3 leftDoorMove = new Vector3(-2, 0, 0);
         Vector3 rightDoorMove = new Vector3(2, 0, 0);
         if (leftSlideDoor.localPosition == new Vector3(-2, 0, 0))
         {
@@ -200,6 +221,15 @@ public class Raycast : MonoBehaviour
         {
             leftSlideDoor.localPosition -= leftDoorMove;
             rightSlideDoor.localPosition -= rightDoorMove;
+        }*/
+        Vector3 DoorMove = new Vector3(0, 0, 2);
+        if (SlideDoor.localPosition == new Vector3(0, 0, 0))
+        {
+            SlideDoor.localPosition -= DoorMove;
+        }
+        else
+        {
+            SlideDoor.localPosition += DoorMove;
         }
     }
 
@@ -210,7 +240,7 @@ public class Raycast : MonoBehaviour
             lastPosition = playerObject.transform.position;
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
-            Vector3 offset = new Vector3(0f, -3f, 0f);
+            Vector3 offset = new Vector3(0f, -0.5f, 0f);
             playerObject.transform.position = bedPosition + offset;
             isHidden = true;
         }
@@ -237,7 +267,7 @@ public class Raycast : MonoBehaviour
         // Temporarily freeze movement of seeker for 5 seconds
         // disable MoveToPosition script
         StartCoroutine(waiter());
-        
+
     }
 
     IEnumerator waiter()
