@@ -18,7 +18,17 @@ public class Raycast : MonoBehaviour
     private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
+    public GameObject startMenu;
+    public GameObject roleMenu;
+    public GameObject endMenu;
     public GameObject menu;
+    public TextMeshProUGUI circumstanceText;
+    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI statusText;
+    private float timeRemaining;
+    private bool countdownStarted = false;
+    public GameObject Gate;
+    private GameObject[] currentHider;
 
     void Start()
     {
@@ -27,10 +37,19 @@ public class Raycast : MonoBehaviour
 
         lineRenderer.startWidth = 0.001f;
         lineRenderer.endWidth = 0.001f;
+
+        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+        startMenu.transform.position = menuPosition;
+        startMenu.transform.rotation = Camera.main.transform.rotation;
+        startMenu.SetActive(true);
+        CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+        targetScript.enabled = false;
     }
 
     void Update()
     {
+        currentHider = GameObject.FindGameObjectsWithTag("Hider");
+
         Vector3 rayOrigin = mainCamera.transform.position - mainCamera.transform.up * 0.025f;
         Ray ray = new Ray(rayOrigin, mainCamera.transform.forward);
 
@@ -65,6 +84,48 @@ public class Raycast : MonoBehaviour
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         Application.Quit();
+                    }
+                }
+                else if (objectName == "Single") // Single game
+                {
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        startMenu.SetActive(false);
+                        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+                        roleMenu.transform.position = menuPosition;
+                        roleMenu.transform.rotation = Camera.main.transform.rotation;
+                        roleMenu.SetActive(true);
+                    }
+                }
+                else if (objectName == "Multiple") // Multiple game
+                {
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        // Modified your multiplayer games starting setup here
+                        startMenu.SetActive(false);
+                        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+                        roleMenu.transform.position = menuPosition;
+                        roleMenu.transform.rotation = Camera.main.transform.rotation;
+                        roleMenu.SetActive(true);
+                    }
+                }
+                else if (objectName == "Hider" || objectName == "Seeker") // Set character as a hider / seeker
+                {
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        playerObject.tag = objectName;
+                        roleMenu.SetActive(false);
+                        StartCoroutine(hideTime());
+                    }
+
+                }
+                else if (objectName == "Restart")
+                {
+                    if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
+                    {
+                        playerObject.tag = "Untagged";
+                        endMenu.SetActive(false);
+                        startMenu.SetActive(true);
                     }
                 }
             }
@@ -124,12 +185,12 @@ public class Raycast : MonoBehaviour
 
                     SlideDoors();
                 }
-                else if (hit.collider.CompareTag("Hide Place"))
+                else if (hit.collider.CompareTag("Hide Place") && playerObject.tag == "Hider")
                 {
                     Vector3 bedPosition = hit.collider.gameObject.transform.position;
                     Hide(bedPosition);
                 }
-                else if (hit.collider.CompareTag("Hider"))
+                else if (hit.collider.CompareTag("Hider") && playerObject.tag == "Seeker")
                 {
                     // Play object's audio source
                     // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
@@ -139,18 +200,6 @@ public class Raycast : MonoBehaviour
                     hider = temp;
 
                     Hider();
-                }
-                else if (hit.collider.CompareTag("Seeker"))
-                {
-                    // Play object's audio source
-                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    // audioSourceToUse.Play();
-
-                    // Modify transform to gazed object
-                    seeker = temp;
-
-                    // StartCoroutine(Seeker());
-                    Seeker();
                 }
             }
         }
@@ -173,23 +222,21 @@ public class Raycast : MonoBehaviour
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
         }
-    }
-
-    void RotateDoors()
-    {
-        Vector3 DoorRotate = new Vector3(0, 0, 90);
-        if (Door.localRotation == Quaternion.Euler(-90, 0, 0))
+        // Countdown
+        if (countdownStarted)
         {
-            Door.localRotation *= Quaternion.Euler(DoorRotate);
-        }
-        else
-        {
-            Door.localRotation *= Quaternion.Euler(-DoorRotate);
-        }
+            timeRemaining -= Time.deltaTime;
 
-        // start an audio source
-        // AudioSource audioSource = GetComponent<AudioSource>();
-        // audioSource.Play();
+            if (timeRemaining <= 0f)
+            {
+                timeRemaining = 0f;
+                countdownStarted = false;
+                // Handle countdown completion here
+                Debug.Log("Countdown completed!");
+            }
+
+            UpdateCountdownDisplay();
+        }
     }
 
     void MainDoors()
@@ -204,6 +251,23 @@ public class Raycast : MonoBehaviour
         {
             leftDoor.localRotation *= Quaternion.Euler(DoorRotate);
             rightDoor.localRotation *= Quaternion.Euler(-DoorRotate);
+        }
+
+        // start an audio source
+        // AudioSource audioSource = GetComponent<AudioSource>();
+        // audioSource.Play();
+    }
+
+    void RotateDoors()
+    {
+        Vector3 DoorRotate = new Vector3(0, 0, 90);
+        if (Door.localRotation == Quaternion.Euler(-90, 0, 0))
+        {
+            Door.localRotation *= Quaternion.Euler(DoorRotate);
+        }
+        else
+        {
+            Door.localRotation *= Quaternion.Euler(-DoorRotate);
         }
 
         // start an audio source
@@ -250,22 +314,86 @@ public class Raycast : MonoBehaviour
         hider.SetActive(false);
     }
 
-    void Seeker()
+    IEnumerator hideTime()
     {
-        // test disable mesh renderer of seeker
-        // seeker.GetComponent<MeshRenderer>().enabled = false;
-
-        // Temporarily freeze movement of seeker for 5 seconds
-        // disable MoveToPosition script
-        StartCoroutine(waiter());
-
+        countdownStarted = true;
+        timeRemaining = 30f;
+        circumstanceText.text = "Time to hide...";
+        if (playerObject.tag == "Hider")
+        {
+            CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+            targetScript.enabled = true;
+            playerObject.transform.position = new Vector3(7, 1, 2);
+        }
+        else
+        {
+            playerObject.transform.position = new Vector3(-50, -2, 2);
+        }
+        yield return new WaitForSeconds(30);
+        countdownText.text = "";
+        StartCoroutine(startTime());
     }
 
-    IEnumerator waiter()
+    IEnumerator startTime()
     {
-        seeker.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-        yield return new WaitForSeconds(5);
-        seeker.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        leftDoor = Gate.transform.Find("Left Door").transform;
+        rightDoor = Gate.transform.Find("Right Door").transform;
+        MainDoors();
+        countdownStarted = true;
+        timeRemaining = 120f;
+        if (playerObject.tag == "Hider")
+        {
+            circumstanceText.text = "Time to survive...";
+        }
+        else
+        {
+            CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+            targetScript.enabled = true;
+            circumstanceText.text = "Time to seek...";
+        }
+        yield return new WaitForSeconds(120);
+        if (playerObject.tag == "Hider")
+        {
+            gameEnd(true);
+        }
+        else
+        {
+            if (currentHider.Length == 0)
+            {
+                gameEnd(true);
+            }
+            else
+            {
+                gameEnd(false);
+            }
+        }
+    }
+    void UpdateCountdownDisplay()
+    {
+        // Convert time remaining to seconds
+        int seconds = Mathf.CeilToInt(timeRemaining);
+
+        // Update the text to display the time remaining
+        countdownText.text = "Time Remaining: " + seconds.ToString() + "s";
+    }
+
+    void gameEnd(bool win)
+    {
+        if (win)
+        {
+            statusText.text = "You Win!";
+        }
+        else
+        {
+            statusText.text = "You Lose!";
+        }
+        leftDoor = Gate.transform.Find("Left Door").transform;
+        rightDoor = Gate.transform.Find("Right Door").transform;
+        MainDoors();
+        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+        endMenu.transform.position = menuPosition;
+        endMenu.transform.rotation = Camera.main.transform.rotation;
+        endMenu.SetActive(true);
     }
 
     void DrawRay(Vector3 start, Vector3 end)
