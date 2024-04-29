@@ -12,6 +12,7 @@ TagManager:
   - Hider
   - Seeker
   - Main Door
+  - Touched
   layers:
   - Default
   - TransparentFX

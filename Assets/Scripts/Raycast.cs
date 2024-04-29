@@ -28,11 +28,16 @@ public class Raycast : MonoBehaviour
     public TextMeshProUGUI statusText;
     private float timeRemaining;
     private bool countdownStarted = false;
-    public GameObject Gate;
-    private GameObject[] currentHider;
+    public GameObject Gate; // Main gate
     public GameObject playerVisual;
     public GameObject hiderVisual;
     public GameObject seekerVisual;
+    private bool end = true;
+    private float spawnInterval = 5f; // The interval between NPC spawns
+    public int maxNPCs = 1; // The maximum number of NPCs allowed
+    private Transform[] hidePlaces; // Array to store hide place positions
+    private GameObject[] currentHider;
+    private int currentNPCs = 0; // The current number of spawned NPCs
 
     void Start()
     {
@@ -42,10 +47,7 @@ public class Raycast : MonoBehaviour
         lineRenderer.startWidth = 0.001f;
         lineRenderer.endWidth = 0.001f;
 
-        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
-        startMenu.transform.position = menuPosition;
-        startMenu.transform.rotation = Camera.main.transform.rotation;
-        startMenu.SetActive(true);
+        openMenu(startMenu);
         CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
         targetScript.enabled = false;
     }
@@ -53,6 +55,10 @@ public class Raycast : MonoBehaviour
     void Update()
     {
         currentHider = GameObject.FindGameObjectsWithTag("Hider");
+        if (currentHider.Length == 0 && !end)
+        {
+            gameEnd(true);
+        }
 
         Vector3 rayOrigin = mainCamera.transform.position - mainCamera.transform.up * 0.025f;
         Ray ray = new Ray(rayOrigin, mainCamera.transform.forward);
@@ -95,10 +101,7 @@ public class Raycast : MonoBehaviour
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         startMenu.SetActive(false);
-                        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
-                        roleMenu.transform.position = menuPosition;
-                        roleMenu.transform.rotation = Camera.main.transform.rotation;
-                        roleMenu.SetActive(true);
+                        openMenu(roleMenu);
                     }
                 }
                 else if (objectName == "Multiple") // Multiple game
@@ -107,10 +110,7 @@ public class Raycast : MonoBehaviour
                     {
                         // Modified your multiplayer games starting setup here
                         startMenu.SetActive(false);
-                        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
-                        roleMenu.transform.position = menuPosition;
-                        roleMenu.transform.rotation = Camera.main.transform.rotation;
-                        roleMenu.SetActive(true);
+                        openMenu(roleMenu);
                     }
                 }
                 else if (objectName == "Hider" || objectName == "Seeker") // Set character as a hider / seeker
@@ -131,6 +131,20 @@ public class Raycast : MonoBehaviour
                         else if (objectName == "Seeker")
                         {
                             copiedObject = Instantiate(seekerVisual);
+                            // Find all GameObjects tagged with "Hide Place"
+                            GameObject[] hidePlaceObjects = GameObject.FindGameObjectsWithTag("Hide Place");
+
+                            // Initialize the array with the number of hide places found
+                            hidePlaces = new Transform[hidePlaceObjects.Length];
+
+                            // Fill the array with the positions of hide places
+                            for (int i = 0; i < hidePlaceObjects.Length; i++)
+                            {
+                                hidePlaces[i] = hidePlaceObjects[i].transform;
+                            }
+
+                            // Start spawning NPCs at intervals
+                            InvokeRepeating("SpawnNPC", 0f, spawnInterval);
                         }
 
                         // Set the parent of the copied object to the parentObject
@@ -150,8 +164,32 @@ public class Raycast : MonoBehaviour
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
                         playerObject.tag = "Untagged";
+                        // Find all GameObjects with tags "Hider", "Seeker", or "Touched"
+                        GameObject[] hiderToDelete = GameObject.FindGameObjectsWithTag("Hider");
+                        GameObject[] seekerObjects = GameObject.FindGameObjectsWithTag("Seeker");
+                        GameObject[] touchedObjects = GameObject.FindGameObjectsWithTag("Touched");
+
+                        // Combine arrays
+                        GameObject[] allObjects = new GameObject[hiderToDelete.Length + seekerObjects.Length + touchedObjects.Length];
+                        hiderToDelete.CopyTo(allObjects, 0);
+                        seekerObjects.CopyTo(allObjects, hiderToDelete.Length);
+                        touchedObjects.CopyTo(allObjects, hiderToDelete.Length + seekerObjects.Length);
+
+                        // Iterate through each object and destroy it
+                        foreach (GameObject obj in allObjects)
+                        {
+                            // Check if the name contains "(Clone)"
+                            if (obj.name.Contains("AvatarHumanV2(Clone)") || obj.name.Contains("AvatarZombieV3(Clone)"))
+                            {
+                                // Destroy the GameObject
+                                Destroy(obj);
+                            }
+                        }
+                        leftDoor = Gate.transform.Find("Left Door").transform;
+                        rightDoor = Gate.transform.Find("Right Door").transform;
+                        MainDoors();
                         endMenu.SetActive(false);
-                        startMenu.SetActive(true);
+                        openMenu(startMenu);
                     }
                 }
             }
@@ -164,10 +202,6 @@ public class Raycast : MonoBehaviour
                 outline.OutlineWidth = 10f;
             }
 
-            // Use Y Button
-            // Kuei-Yu: js11
-            // Ryan: js20
-            // Android: js0
             if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
             {
                 string gazedObjectName = hit.collider.gameObject.name;
@@ -219,10 +253,6 @@ public class Raycast : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Hider") && playerObject.tag == "Seeker")
                 {
-                    // Play object's audio source
-                    // AudioSource audioSourceToUse = temp.GetComponent<AudioSource>();
-                    // audioSourceToUse.Play();
-
                     // Modify transform to gazed object
                     hider = temp;
 
@@ -242,10 +272,7 @@ public class Raycast : MonoBehaviour
         // Android: js2
         if ((Input.GetAxisRaw("js2") != 0 || Input.GetAxisRaw("js7") != 0 || Input.GetAxisRaw("js15") != 0 || Input.GetKeyDown(KeyCode.B)) && !menu.activeSelf)
         {
-            Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
-            menu.transform.position = menuPosition;
-            menu.transform.rotation = Camera.main.transform.rotation;
-            menu.SetActive(true);
+            openMenu(menu);
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
         }
@@ -258,12 +285,43 @@ public class Raycast : MonoBehaviour
             {
                 timeRemaining = 0f;
                 countdownStarted = false;
-                // Handle countdown completion here
-                Debug.Log("Countdown completed!");
             }
 
             UpdateCountdownDisplay();
         }
+        // Got touched
+        if (playerObject.tag == "Touched")
+        {
+            gameEnd(false);
+        }
+    }
+
+    void openMenu(GameObject Menu)
+    {
+        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
+        Menu.transform.position = menuPosition;
+        Menu.transform.rotation = Camera.main.transform.rotation;
+        Menu.SetActive(true);
+    }
+
+    void gameEnd(bool win)
+    {
+        StopAllCoroutines();
+        if (win)
+        {
+            statusText.text = "You Win!";
+        }
+        else
+        {
+            statusText.text = "You Lose!";
+        }
+        openMenu(endMenu);
+        CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+        targetScript.enabled = false;
+        timeRemaining = 0f;
+        circumstanceText.text = "";
+        countdownText.text = "";
+        end = true;
     }
 
     void MainDoors()
@@ -323,7 +381,7 @@ public class Raycast : MonoBehaviour
             lastRotation = playerObject.transform.rotation;
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
-            Vector3 offset = new Vector3(00.4f, 0.2f, 0.3f);
+            Vector3 offset = new Vector3(0.04f, 0.2f, 0.3f);
             playerObject.transform.position = bedPosition + offset;
             playerObject.transform.rotation = bedRotation;
             playerObject.transform.rotation *= Quaternion.Euler(0, 0, 90);
@@ -343,10 +401,13 @@ public class Raycast : MonoBehaviour
     {
         // Disable the hider
         hider.SetActive(false);
+        hider.tag = "Touched";
+        hider.transform.parent.parent.tag = "Touched";
     }
 
     IEnumerator hideTime()
     {
+        currentNPCs = 0;
         countdownStarted = true;
         timeRemaining = 30f;
         circumstanceText.text = "Time to hide...";
@@ -367,6 +428,7 @@ public class Raycast : MonoBehaviour
 
     IEnumerator startTime()
     {
+        end = false;
         leftDoor = Gate.transform.Find("Left Door").transform;
         rightDoor = Gate.transform.Find("Right Door").transform;
         MainDoors();
@@ -389,14 +451,7 @@ public class Raycast : MonoBehaviour
         }
         else
         {
-            if (currentHider.Length == 0)
-            {
-                gameEnd(true);
-            }
-            else
-            {
-                gameEnd(false);
-            }
+            gameEnd(false);
         }
     }
     void UpdateCountdownDisplay()
@@ -408,25 +463,31 @@ public class Raycast : MonoBehaviour
         countdownText.text = "Time Remaining: " + seconds.ToString() + "s";
     }
 
-    void gameEnd(bool win)
+    void SpawnNPC()
     {
-        if (win)
+        // Check if the maximum number of NPCs has been reached
+        if (currentNPCs >= maxNPCs)
         {
-            statusText.text = "You Win!";
+            return; // Stop spawning NPCs if the limit is reached
         }
-        else
-        {
-            statusText.text = "You Lose!";
-        }
-        leftDoor = Gate.transform.Find("Left Door").transform;
-        rightDoor = Gate.transform.Find("Right Door").transform;
-        MainDoors();
-        Vector3 menuPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.1f;
-        endMenu.transform.position = menuPosition;
-        endMenu.transform.rotation = Camera.main.transform.rotation;
-        endMenu.SetActive(true);
-        CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
-        targetScript.enabled = false;
+
+        // Randomly select a hide place
+        Transform randomHidePlace = hidePlaces[Random.Range(0, hidePlaces.Length)];
+
+        // Instantiate the NPC prefab
+        GameObject NPC = Instantiate(hiderVisual.transform.parent.parent.gameObject, randomHidePlace.position, Quaternion.identity);
+
+        // Modify the position and rotation of the spawned NPC
+        Vector3 offset = new Vector3(0.04f, 0.2f, 0.3f);
+        NPC.transform.position = randomHidePlace.position + offset;
+        NPC.transform.rotation = randomHidePlace.rotation;
+        NPC.transform.rotation *= Quaternion.Euler(0, 0, 90);
+
+        // Activate the spawned NPC
+        NPC.SetActive(true);
+
+        // Increment the count of spawned NPCs
+        currentNPCs++;
     }
 
     void DrawRay(Vector3 start, Vector3 end)
