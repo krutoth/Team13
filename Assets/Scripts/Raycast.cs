@@ -18,6 +18,7 @@ public class Raycast : MonoBehaviour
     private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
+    private Quaternion lastRotation;
     public GameObject startMenu;
     public GameObject roleMenu;
     public GameObject endMenu;
@@ -29,6 +30,9 @@ public class Raycast : MonoBehaviour
     private bool countdownStarted = false;
     public GameObject Gate;
     private GameObject[] currentHider;
+    public GameObject playerVisual;
+    public GameObject hiderVisual;
+    public GameObject seekerVisual;
 
     void Start()
     {
@@ -113,6 +117,28 @@ public class Raycast : MonoBehaviour
                 {
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
+                        foreach (Transform child in playerVisual.transform)
+                        {
+                            // Destroy the child object
+                            Destroy(child.gameObject);
+                        }
+                        // Instantiate a copy of the objectToCopy
+                        GameObject copiedObject = null;
+                        if (objectName == "Hider")
+                        {
+                            copiedObject = Instantiate(hiderVisual);
+                        }
+                        else if (objectName == "Seeker")
+                        {
+                            copiedObject = Instantiate(seekerVisual);
+                        }
+
+                        // Set the parent of the copied object to the parentObject
+                        copiedObject.transform.parent = playerVisual.transform;
+
+                        // Optionally, reset the local position and rotation of the copied object
+                        copiedObject.transform.localPosition = new Vector3(0f, -1.11f, 0f);
+                        copiedObject.transform.localRotation = Quaternion.identity;
                         playerObject.tag = objectName;
                         roleMenu.SetActive(false);
                         StartCoroutine(hideTime());
@@ -188,7 +214,8 @@ public class Raycast : MonoBehaviour
                 else if (hit.collider.CompareTag("Hide Place") && playerObject.tag == "Hider")
                 {
                     Vector3 bedPosition = hit.collider.gameObject.transform.position;
-                    Hide(bedPosition);
+                    Quaternion bedRotation = hit.collider.gameObject.transform.rotation;
+                    Hide(bedPosition, bedRotation);
                 }
                 else if (hit.collider.CompareTag("Hider") && playerObject.tag == "Seeker")
                 {
@@ -288,20 +315,24 @@ public class Raycast : MonoBehaviour
         }
     }
 
-    void Hide(Vector3 bedPosition)
+    void Hide(Vector3 bedPosition, Quaternion bedRotation)
     {
         if (!isHidden)
         {
             lastPosition = playerObject.transform.position;
+            lastRotation = playerObject.transform.rotation;
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
             targetScript.enabled = false;
-            Vector3 offset = new Vector3(0f, -0.5f, 0f);
+            Vector3 offset = new Vector3(00.4f, 0.2f, 0.3f);
             playerObject.transform.position = bedPosition + offset;
+            playerObject.transform.rotation = bedRotation;
+            playerObject.transform.rotation *= Quaternion.Euler(0, 0, 90);
             isHidden = true;
         }
         else
         {
             CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+            playerObject.transform.rotation = lastRotation;
             targetScript.enabled = true;
             playerObject.transform.position = lastPosition;
             isHidden = false;
@@ -394,6 +425,8 @@ public class Raycast : MonoBehaviour
         endMenu.transform.position = menuPosition;
         endMenu.transform.rotation = Camera.main.transform.rotation;
         endMenu.SetActive(true);
+        CharacterMovement targetScript = playerObject.GetComponent<CharacterMovement>();
+        targetScript.enabled = false;
     }
 
     void DrawRay(Vector3 start, Vector3 end)
