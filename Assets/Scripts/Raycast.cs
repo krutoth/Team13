@@ -33,7 +33,7 @@ public class Raycast : MonoBehaviour
     public GameObject hiderVisual;
     public GameObject seekerVisual;
     private bool end = true;
-    public int maxNPCs = 1; // The maximum number of NPCs allowed
+    private int maxNPCs = 3; // The maximum number of NPCs allowed
     private Transform[] hidePlaces; // Array to store hide place positions
     private GameObject[] currentHider;
 
