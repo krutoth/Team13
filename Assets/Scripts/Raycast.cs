@@ -176,7 +176,7 @@ public class Raycast : MonoBehaviour
                         // Iterate through each object and destroy it
                         foreach (GameObject obj in allObjects)
                         {
-                            // Check if the name contains "(Clone)"
+                            // Check if the name contains "NPC"
                             if (obj.name.Contains("NPC"))
                             {
                                 // Destroy the GameObject
@@ -288,7 +288,7 @@ public class Raycast : MonoBehaviour
             UpdateCountdownDisplay();
         }
         // Got touched
-        if (playerObject.tag == "Touched")
+        if (playerObject.tag == "Touched" && !end)
         {
             gameEnd(false);
         }
@@ -421,6 +421,11 @@ public class Raycast : MonoBehaviour
         yield return new WaitForSeconds(30);
         countdownText.text = "";
         StartCoroutine(startTime());
+        if(playerObject.tag == "Hider")
+        {
+            GameObject NPC = Instantiate(seekerVisual.transform.parent.parent.gameObject, new Vector3(-50, -2, 2), Quaternion.identity);
+            NPC.SetActive(true);
+        }
     }
 
     IEnumerator startTime()
