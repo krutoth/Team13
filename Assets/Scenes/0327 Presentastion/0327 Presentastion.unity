@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028358, g: 0.22571376, b: 0.30692235, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3875,18 +3875,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3771948707769748877}
     m_Modifications:
-    - target: {fileID: 6746964022776144260, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6746964023194838616, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
-      propertyPath: m_Size.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6746964023194838616, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6746964023194838616, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -3950,10 +3938,6 @@ PrefabInstance:
     - target: {fileID: 6746964023293654556, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
       propertyPath: m_Name
       value: Closet
-      objectReference: {fileID: 0}
-    - target: {fileID: 6746964023543644662, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb7d56d9a775413d98e3b8e2aaa7b63, type: 3}
@@ -4611,6 +4595,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 1341154524655289306, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341154525568194896, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+=======
     - target: {fileID: 1225551467405105065, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4648,6 +4639,7 @@ PrefabInstance:
       value: 100.97
       objectReference: {fileID: 0}
     - target: {fileID: 1341845562549524225, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
+>>>>>>> origin/Ryan
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -4766,10 +4758,6 @@ PrefabInstance:
     - target: {fileID: 5317847114628833324, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
       propertyPath: m_TagString
       value: Seeker
-      objectReference: {fileID: 0}
-    - target: {fileID: 7710586820478590682, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7710586820478590682, guid: b20c0362088f94844bd62a37002f04a0, type: 3}
       propertyPath: m_TagString
@@ -7272,7 +7260,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh163432
+  m_Name: pb_Mesh-7334
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10257,7 +10245,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh159506
+  m_Name: pb_Mesh-1238
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
