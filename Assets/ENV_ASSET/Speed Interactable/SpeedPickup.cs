@@ -25,26 +25,27 @@ public class SpeedPickup : MonoBehaviour
         Debug.Log("Collision detected");
         // For testing, compare Capsule tag. For game, compare Clone tag
         // if (other.gameObject.tag == "Player")
-        if (other.gameObject.CompareTag("Capsule") || 
-            other.gameObject.CompareTag("Clone") || 
-            other.gameObject.CompareTag("Character") ||
-            other.gameObject.CompareTag("Model") ||
-            other.gameObject.tag == "Capsule" || 
-            other.gameObject.tag == "Clone" ||
-            other.gameObject.tag == "Character" ||
-            other.gameObject.tag == "Model" ||
-            other.gameObject.CompareTag("Player") ||
-            other.gameObject.tag == "Player"
-            )
+        if (other.gameObject.CompareTag("Seeker"))
+        // if (other.gameObject.CompareTag("Capsule") || 
+        //     other.gameObject.CompareTag("Clone") || 
+        //     other.gameObject.CompareTag("Character") ||
+        //     other.gameObject.CompareTag("Model") ||
+        //     other.gameObject.tag == "Capsule" || 
+        //     other.gameObject.tag == "Clone" ||
+        //     other.gameObject.tag == "Character" ||
+        //     other.gameObject.tag == "Model" ||
+        //     other.gameObject.CompareTag("Player") ||
+        //     other.gameObject.tag == "Player"
+        //     )
         {
             // For test, change color to red
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            // gameObject.GetComponent<Renderer>().material.color = Color.red;
 
             // Disable mesh
-            // gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
 
             // Disable collider
-            // gameObject.GetComponent<Collider>().enabled = false;
+            gameObject.GetComponent<Collider>().enabled = false;
 
             // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
             GameObject.Find("Character").GetComponent<CharacterMovement>().speed += speedBoost;
