@@ -33,11 +33,9 @@ public class Raycast : MonoBehaviour
     public GameObject hiderVisual;
     public GameObject seekerVisual;
     private bool end = true;
-    private float spawnInterval = 5f; // The interval between NPC spawns
-    public int maxNPCs = 1; // The maximum number of NPCs allowed
+    private int maxNPCs = 3; // The maximum number of NPCs allowed
     private Transform[] hidePlaces; // Array to store hide place positions
     private GameObject[] currentHider;
-    private int currentNPCs = 0; // The current number of spawned NPCs
 
     void Start()
     {
@@ -144,7 +142,7 @@ public class Raycast : MonoBehaviour
                             }
 
                             // Start spawning NPCs at intervals
-                            InvokeRepeating("SpawnNPC", 0f, spawnInterval);
+                            SpawnNPC();
                         }
 
                         // Set the parent of the copied object to the parentObject
@@ -178,8 +176,8 @@ public class Raycast : MonoBehaviour
                         // Iterate through each object and destroy it
                         foreach (GameObject obj in allObjects)
                         {
-                            // Check if the name contains "(Clone)"
-                            if (obj.name.Contains("AvatarHumanV2(Clone)") || obj.name.Contains("AvatarZombieV3(Clone)"))
+                            // Check if the name contains "NPC"
+                            if (obj.name.Contains("NPC"))
                             {
                                 // Destroy the GameObject
                                 Destroy(obj);
@@ -290,7 +288,7 @@ public class Raycast : MonoBehaviour
             UpdateCountdownDisplay();
         }
         // Got touched
-        if (playerObject.tag == "Touched")
+        if (playerObject.tag == "Touched" && !end)
         {
             gameEnd(false);
         }
@@ -407,7 +405,6 @@ public class Raycast : MonoBehaviour
 
     IEnumerator hideTime()
     {
-        currentNPCs = 0;
         countdownStarted = true;
         timeRemaining = 30f;
         circumstanceText.text = "Time to hide...";
@@ -424,6 +421,11 @@ public class Raycast : MonoBehaviour
         yield return new WaitForSeconds(30);
         countdownText.text = "";
         StartCoroutine(startTime());
+        if(playerObject.tag == "Hider")
+        {
+            GameObject NPC = Instantiate(seekerVisual.transform.parent.parent.gameObject, new Vector3(-50, -2, 2), Quaternion.identity);
+            NPC.SetActive(true);
+        }
     }
 
     IEnumerator startTime()
@@ -465,29 +467,22 @@ public class Raycast : MonoBehaviour
 
     void SpawnNPC()
     {
-        // Check if the maximum number of NPCs has been reached
-        if (currentNPCs >= maxNPCs)
-        {
-            return; // Stop spawning NPCs if the limit is reached
-        }
-
-        // Randomly select a hide place
-        Transform randomHidePlace = hidePlaces[Random.Range(0, hidePlaces.Length)];
-
         // Instantiate the NPC prefab
-        GameObject NPC = Instantiate(hiderVisual.transform.parent.parent.gameObject, randomHidePlace.position, Quaternion.identity);
-
-        // Modify the position and rotation of the spawned NPC
-        Vector3 offset = new Vector3(0.04f, 0.2f, 0.3f);
-        NPC.transform.position = randomHidePlace.position + offset;
-        NPC.transform.rotation = randomHidePlace.rotation;
-        NPC.transform.rotation *= Quaternion.Euler(0, 0, 90);
-
-        // Activate the spawned NPC
-        NPC.SetActive(true);
-
-        // Increment the count of spawned NPCs
-        currentNPCs++;
+        GameObject[] NPC = new GameObject[maxNPCs];
+        for (int i = 0; i < maxNPCs; i++)
+        {
+            // Randomly select a hide place
+            Transform randomHidePlace = hidePlaces[Random.Range(0, hidePlaces.Length)];
+            // Example: Instantiate hider GameObject and assign it to the array element
+            NPC[i] = Instantiate(hiderVisual.transform.parent.parent.gameObject, randomHidePlace.position, Quaternion.identity);
+            Vector3 offset = new Vector3(0.04f, 0.2f, 0.3f);
+            NPC[i].name = "NPC " + i.ToString();
+            NPC[i].transform.Find("Model").transform.Find("default").gameObject.name = i.ToString();
+            NPC[i].transform.position = randomHidePlace.position + offset;
+            NPC[i].transform.rotation = randomHidePlace.rotation;
+            NPC[i].transform.rotation *= Quaternion.Euler(0, 0, 90);
+            NPC[i].SetActive(true);
+        }
     }
 
     void DrawRay(Vector3 start, Vector3 end)
