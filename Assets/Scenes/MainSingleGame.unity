@@ -8521,23 +8521,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3680728033944538266, guid: 857a443b56955d54b8d6c46a0c950e2d, type: 3}
---- !u!1 &903741416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3623264566426946428, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
-  m_PrefabInstance: {fileID: 4288121131836787324}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &903741421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903741416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962b88319b7e746d2a970d882843c223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &905417621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11396,18 +11379,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7106360719022191427, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
   m_PrefabInstance: {fileID: 4288121131836787324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1191658669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191658667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962b88319b7e746d2a970d882843c223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1194138720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14946,24 +14917,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1248671964149668668, guid: 857a443b56955d54b8d6c46a0c950e2d, type: 3}
---- !u!1 &1565346660
+--- !u!1 &1565346660 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 100000, guid: 511ae3cff5b97bb46a037e013d2a228b, type: 3}
   m_PrefabInstance: {fileID: 859761812}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1565346666}
-  - component: {fileID: 1565346665}
-  - component: {fileID: 1565346662}
-  m_Layer: 0
-  m_Name: 
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!114 &1565346662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14973,9 +14931,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565346660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a86b7f4aea94a0291733c7066c30ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 760b7fa43a8ce4435b4779a0e20509d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedBoost: 10
+  respawn: 1
+  respawnTime: 3
 --- !u!65 &1565346665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14989,21 +14950,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0612382, y: 1.6065068, z: 2.5475442}
   m_Center: {x: -0.026591059, y: 0.79959285, z: 0.015431462}
---- !u!4 &1565346666
+--- !u!4 &1565346666 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 511ae3cff5b97bb46a037e013d2a228b, type: 3}
+  m_PrefabInstance: {fileID: 859761812}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565346660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 788295170}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1569365622
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19090,18 +19041,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4288121131830663351, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
   m_PrefabInstance: {fileID: 4288121131836787324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2042049502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042049496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962b88319b7e746d2a970d882843c223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &2045353889
 MeshCollider:
   m_ObjectHideFlags: 0

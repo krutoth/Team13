@@ -24,7 +24,7 @@ public class SpeedPickup : MonoBehaviour
     {
         Debug.Log("Collision detected");
         // For testing, compare Capsule tag. For game, compare Clone tag
-        if (other.gameObject.CompareTag("Hider") || other.gameObject.CompareTag("Seeker")) 
+        if (other.gameObject.CompareTag("Seeker")) 
         {
             // For test, change color to red
             // gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -36,7 +36,7 @@ public class SpeedPickup : MonoBehaviour
             gameObject.GetComponent<Collider>().enabled = false;
 
             // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
-            GameObject.Find("Character").GetComponent<CharacterMovement>().speed += speedBoost;
+            other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
             // other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
 
             if (respawn)

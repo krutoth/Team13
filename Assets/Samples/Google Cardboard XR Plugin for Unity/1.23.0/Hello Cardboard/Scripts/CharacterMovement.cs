@@ -50,6 +50,15 @@ public class CharacterMovement : NetworkBehaviour //MonoBehaviour
 
         charCntrl.SimpleMove(moveVect);
 
+        if(speed >= 10)
+        {
+            StartCoroutine(waitTime());
+        }
+    }
 
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(10);
+        speed = 5f;
     }
 }
