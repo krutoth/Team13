@@ -24,6 +24,7 @@ public class singleRaycast : MonoBehaviour
     public GameObject roleMenu;
     public GameObject endMenu;
     public GameObject menu;
+    public GameObject UIs;
     public TextMeshProUGUI circumstanceText;
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI statusText;
@@ -55,6 +56,7 @@ public class singleRaycast : MonoBehaviour
 
     void Update()
     {
+        openMenu(UIs);
         currentHider = GameObject.FindGameObjectsWithTag("Hider");
         if (currentHider.Length == 0 && !end)
         {
