@@ -20,20 +20,20 @@ public class SpeedPickup : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected");
         // For testing, compare Capsule tag. For game, compare Clone tag
         // if (other.gameObject.tag == "Player")
-        if (other.transform.CompareTag("Capsule") || 
-            other.transform.CompareTag("Clone") || 
-            other.transform.CompareTag("Character") ||
-            other.transform.CompareTag("Model") ||
+        if (other.gameObject.CompareTag("Capsule") || 
+            other.gameObject.CompareTag("Clone") || 
+            other.gameObject.CompareTag("Character") ||
+            other.gameObject.CompareTag("Model") ||
             other.gameObject.tag == "Capsule" || 
             other.gameObject.tag == "Clone" ||
             other.gameObject.tag == "Character" ||
             other.gameObject.tag == "Model" ||
-            other.transform.CompareTag("Player") ||
+            other.gameObject.CompareTag("Player") ||
             other.gameObject.tag == "Player"
             )
         {
