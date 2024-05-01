@@ -50,7 +50,7 @@ public class XRCardboardController : NetworkBehaviour //MonoBehaviour
             cam.enabled = false; // Disable camera if not the owner
         }
 #if UNITY_EDITOR
-        SetObjects(vrActive);
+            SetObjects(vrActive);
 #else
         if (IsOwner) // Only set objects for the owner
         {
