@@ -24,19 +24,7 @@ public class SpeedPickup : MonoBehaviour
     {
         Debug.Log("Collision detected");
         // For testing, compare Capsule tag. For game, compare Clone tag
-        // if (other.gameObject.tag == "Player")
-        if (other.gameObject.CompareTag("Seeker"))
-        // if (other.gameObject.CompareTag("Capsule") || 
-        //     other.gameObject.CompareTag("Clone") || 
-        //     other.gameObject.CompareTag("Character") ||
-        //     other.gameObject.CompareTag("Model") ||
-        //     other.gameObject.tag == "Capsule" || 
-        //     other.gameObject.tag == "Clone" ||
-        //     other.gameObject.tag == "Character" ||
-        //     other.gameObject.tag == "Model" ||
-        //     other.gameObject.CompareTag("Player") ||
-        //     other.gameObject.tag == "Player"
-        //     )
+        if (other.gameObject.CompareTag("Hider") || other.gameObject.CompareTag("Seeker")) 
         {
             // For test, change color to red
             // gameObject.GetComponent<Renderer>().material.color = Color.red;
