@@ -5,23 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-<<<<<<< HEAD
-  - enabled: 0
-    path: Assets/Scenes/assignment01.unity
-    guid: bc6be3831710c3643b891f513120a0b6
-  - enabled: 0
-    path: Assets/MiLabCardboardExtension/Scenes/Map Bluetooth Key.unity
-    guid: 1eb807ac90408844da5fd17e087fea1e
-  - enabled: 0
-    path: Assets/Scenes/assignment02.unity
-    guid: 6c60575ff86ca0e46b30f4230d9029d1
   - enabled: 1
-    path: Assets/Scenes/assignment03.unity
-    guid: 6e8b772179bf9f1428827c4103f9e5e9
-=======
-  - enabled: 1
-    path: Assets/Scenes/0327 Presentastion.unity
-    guid: 67397e858e46b4dbf95c20d3932bb565
->>>>>>> main
+    path: Assets/Scenes/MainGame.unity
+    guid: 9e3202ad0824a473fb00c81372d88669
+  - enabled: 0
+    path: Assets/Scenes/PunGame.unity
+    guid: c6b69a11f2ee5a64aa9595c86e05bc50
+  - enabled: 0
+    path: Assets/Test.unity
+    guid: 201ea7a7ba951c14bb91f3206caff0e7
   m_configObjects:
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: bdc7b95caf3de8d45ae452675c7ac46f, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1670cf70de28b49d1b4e5fe7924eb06f, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0a2e34867fe754e5a9fb35bdd6772bf2, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 2a4f9a9d5f74d4b7a96083903ab7620f, type: 2}

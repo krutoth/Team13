@@ -6,8 +6,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SpatialTracking;
+using Unity.Netcode;
 
-public class XRCardboardController : MonoBehaviour
+public class XRCardboardController : NetworkBehaviour //MonoBehaviour
 {
     [SerializeField]
     Transform cameraTransform = default;
@@ -30,8 +31,8 @@ public class XRCardboardController : MonoBehaviour
     float defaultFov;
 
 #if UNITY_EDITOR
-    Vector3 lastMousePos;
-    bool vrActive;
+        Vector3 lastMousePos;
+        bool vrActive;
 #endif
 
     void Awake()
@@ -45,7 +46,7 @@ public class XRCardboardController : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR
-        SetObjects(vrActive);
+            SetObjects(vrActive);
 #else
         SetObjects(UnityEngine.XR.XRSettings.enabled);
 #endif
@@ -54,17 +55,17 @@ public class XRCardboardController : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
 #else
         if (Api.IsCloseButtonPressed)
 #endif
             DisableVR();
 
 #if UNITY_EDITOR
-        if (vrActive)
-            SimulateVR();
-        else
-            SimulateDrag();
+            if (vrActive)
+                SimulateVR();
+            else
+                SimulateDrag();
 #else
         if (UnityEngine.XR.XRSettings.enabled)
             return;
@@ -113,8 +114,8 @@ public class XRCardboardController : MonoBehaviour
         {
             SetObjects(true);
 #if UNITY_EDITOR
-            yield return null;
-            vrActive = true;
+                yield return null;
+                vrActive = true;
 #else
             var xrManager = XRGeneralSettings.Instance.Manager;
             if (!xrManager.isInitializationComplete)
@@ -146,17 +147,17 @@ public class XRCardboardController : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    void SimulateVR()
-    {
-        var mousePos = Input.mousePosition;
-        if (Input.GetKey(KeyCode.LeftAlt))
+        void SimulateVR()
         {
-            var delta = mousePos - lastMousePos;
-            dragDegrees.x -= delta.y * dragRate;
-            dragDegrees.y -= delta.x * dragRate;
+            var mousePos = Input.mousePosition;
+            if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                var delta = mousePos - lastMousePos;
+                dragDegrees.x -= delta.y * dragRate;
+                dragDegrees.y -= delta.x * dragRate;
+            }
+            lastMousePos = mousePos;
         }
-        lastMousePos = mousePos;
-    }
 
     void SimulateDrag()
     {

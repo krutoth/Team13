@@ -9,6 +9,10 @@ TagManager:
   - Slide Door
   - Hide Place
   - Button
+  - Hider
+  - Seeker
+  - Main Door
+  - Touched
   layers:
   - Default
   - TransparentFX
