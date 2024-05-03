@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpeedPickup : MonoBehaviour
+{
+    public float speedBoost = 10f;
+    public bool respawn;
+    public float respawnTime = 3f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Debug.Log("Collision detected");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision detected");
+        // For testing, compare Capsule tag. For game, compare Clone tag
+        if (other.gameObject.CompareTag("Seeker")) 
+        {
+            // For test, change color to red
+            // gameObject.GetComponent<Renderer>().material.color = Color.red;
+
+            // Disable mesh
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+            // Disable collider
+            gameObject.GetComponent<Collider>().enabled = false;
+
+            // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
+            other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
+            // other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
+
+            if (respawn)
+            {
+                Invoke("Respawn", respawnTime);
+            }
+        }
+    }
+
+    void Respawn()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+}
