@@ -38,6 +38,7 @@ public class Raycast : MonoBehaviour
     private GameObject[] currentHider;
 
     bool speedBoost = false;
+    private float speedBoostTime = 5f;
 
     void Start()
     {
@@ -293,6 +294,12 @@ public class Raycast : MonoBehaviour
         if (playerObject.tag == "Touched" && !end)
         {
             gameEnd(false);
+        }
+        // Speed boost
+        if (speedBoost)
+        {
+            playerObject.GetComponent<CharacterMovement>().speed = 10f;
+            speedBoost = false;
         }
     }
 
