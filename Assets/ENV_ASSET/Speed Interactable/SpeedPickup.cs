@@ -37,8 +37,7 @@ public class SpeedPickup : MonoBehaviour
 
             // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
             GameObject.Find("Character").GetComponent<CharacterMovement>().speed += speedBoost;
-            
-            // set speedBoost to true in Raycast.cs
+            // set speedBoost to true in RayC.cs
 
             if (respawn)
             {
