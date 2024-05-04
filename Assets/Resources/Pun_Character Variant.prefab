@@ -1847,7 +1847,7 @@ PrefabInstance:
       objectReference: {fileID: 3474598961324142862}
     - target: {fileID: 6086506199998684871, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6086506199998684891, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
       propertyPath: m_IsActive
@@ -1908,6 +1908,10 @@ PrefabInstance:
     - target: {fileID: 8269125890093699669, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882725938025221910, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8149394118307561653, guid: f9e922932a0ad284ea14a0218281cb20, type: 3}
