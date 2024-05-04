@@ -16,7 +16,6 @@ public class singleRaycast : MonoBehaviour
     private Transform rightDoor;
     private Transform SlideDoor;
     private GameObject hider;
-    private GameObject seeker;
     private bool isHidden = false;
     private Vector3 lastPosition;
     private Quaternion lastRotation;
@@ -30,7 +29,6 @@ public class singleRaycast : MonoBehaviour
     public TextMeshProUGUI statusText;
     private float timeRemaining;
     private bool countdownStarted = false;
-    public GameObject Gate; // Main gate
     public GameObject playerVisual;
     public GameObject hiderVisual;
     public GameObject seekerVisual;
@@ -38,8 +36,6 @@ public class singleRaycast : MonoBehaviour
     private int maxNPCs = 3; // The maximum number of NPCs allowed
     private Transform[] hidePlaces; // Array to store hide place positions
     private GameObject[] currentHider;
-
-    bool speedBoost = false;
 
     void Start()
     {
@@ -165,33 +161,7 @@ public class singleRaycast : MonoBehaviour
                 {
                     if (Input.GetAxis("js0") != 0 || Input.GetAxis("js11") != 0 || Input.GetAxis("js20") != 0 || Input.GetKeyDown(KeyCode.Y))
                     {
-                        playerObject.tag = "Untagged";
-                        // Find all GameObjects with tags "Hider", "Seeker", or "Touched"
-                        GameObject[] hiderToDelete = GameObject.FindGameObjectsWithTag("Hider");
-                        GameObject[] seekerObjects = GameObject.FindGameObjectsWithTag("Seeker");
-                        GameObject[] touchedObjects = GameObject.FindGameObjectsWithTag("Touched");
-
-                        // Combine arrays
-                        GameObject[] allObjects = new GameObject[hiderToDelete.Length + seekerObjects.Length + touchedObjects.Length];
-                        hiderToDelete.CopyTo(allObjects, 0);
-                        seekerObjects.CopyTo(allObjects, hiderToDelete.Length);
-                        touchedObjects.CopyTo(allObjects, hiderToDelete.Length + seekerObjects.Length);
-
-                        // Iterate through each object and destroy it
-                        foreach (GameObject obj in allObjects)
-                        {
-                            // Check if the name contains "NPC"
-                            if (obj.name.Contains("NPC"))
-                            {
-                                // Destroy the GameObject
-                                Destroy(obj);
-                            }
-                        }
-                        leftDoor = Gate.transform.Find("Left Door").transform;
-                        rightDoor = Gate.transform.Find("Right Door").transform;
-                        MainDoors();
-                        endMenu.SetActive(false);
-                        openMenu(startMenu);
+                        SceneManager.LoadScene("MainSingleGame");
                     }
                 }
             }
@@ -339,10 +309,6 @@ public class singleRaycast : MonoBehaviour
             leftDoor.localRotation *= Quaternion.Euler(DoorRotate);
             rightDoor.localRotation *= Quaternion.Euler(-DoorRotate);
         }
-
-        // start an audio source
-        // AudioSource audioSource = GetComponent<AudioSource>();
-        // audioSource.Play();
     }
 
     void RotateDoors()
@@ -356,10 +322,6 @@ public class singleRaycast : MonoBehaviour
         {
             Door.localRotation *= Quaternion.Euler(-DoorRotate);
         }
-
-        // start an audio source
-        // AudioSource audioSource = GetComponent<AudioSource>();
-        // audioSource.Play();
     }
 
     void SlideDoors()
@@ -435,6 +397,7 @@ public class singleRaycast : MonoBehaviour
     IEnumerator startTime()
     {
         end = false;
+        GameObject Gate = GameObject.Find("Main door");
         leftDoor = Gate.transform.Find("Left Door").transform;
         rightDoor = Gate.transform.Find("Right Door").transform;
         MainDoors();
