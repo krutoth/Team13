@@ -47,6 +47,9 @@ public class InvisPickup : MonoBehaviour
                 // Check if avatar exists
                 if (avatar != null)
                 {
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    gameObject.GetComponent<Collider>().enabled = false;
+
                     avatar.GetComponent<MeshRenderer>().enabled = false;
                 }
             }

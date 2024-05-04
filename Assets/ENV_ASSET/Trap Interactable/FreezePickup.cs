@@ -29,15 +29,19 @@ public class FreezePickup : MonoBehaviour
             // gameObject.GetComponent<Renderer>().material.color = Color.red;
 
             // Disable mesh
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            // gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            // Disable collider
-            gameObject.GetComponent<Collider>().enabled = false;
+            // // Disable collider
+            // gameObject.GetComponent<Collider>().enabled = false;
 
             // Stop Seeker from moving for 5 seconds for both CharacterMovement.cs and MoveToPosition.cs
             if (other.gameObject.GetComponent<CharacterMovement>() != null)
             {
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<Collider>().enabled = false;
+
                 other.gameObject.GetComponent<CharacterMovement>().speed = 0;
+
             }
 
             // FOR NPC SEEKER, NOT WORKING

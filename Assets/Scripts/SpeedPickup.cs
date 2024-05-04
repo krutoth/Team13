@@ -30,16 +30,19 @@ public class SpeedPickup : MonoBehaviour
             // gameObject.GetComponent<Renderer>().material.color = Color.red;
 
             // Disable mesh
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            // gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            // Disable collider
-            gameObject.GetComponent<Collider>().enabled = false;
+            // // Disable collider
+            // gameObject.GetComponent<Collider>().enabled = false;
 
             // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
             
             // Check if component exists
             if (other.gameObject.GetComponent<CharacterMovement>() != null)
             {
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<Collider>().enabled = false;
+
                 other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
             }
 
