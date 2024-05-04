@@ -39,8 +39,6 @@ public class singleRaycast : MonoBehaviour
     private Transform[] hidePlaces; // Array to store hide place positions
     private GameObject[] currentHider;
 
-    bool speedBoost = false;
-
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
