@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPickup : MonoBehaviour
+public class InvisPickup : MonoBehaviour
 {
-    public float speedBoost = 10f;
-    public bool respawn;
-    public float respawnTime = 3f;
+    public bool invisRespawn;
+    public float invisRespawnTime = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Debug.Log("Collision detected");
+        
     }
 
     // Update is called once per frame
@@ -22,9 +21,9 @@ public class SpeedPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision detected");
+        Debug.Log("Collision detected for InvisPickup");
         // For testing, compare Capsule tag. For game, compare Clone tag
-        if (other.gameObject.CompareTag("Seeker")) 
+        if (other.gameObject.CompareTag("Hider")) 
         {
             // For test, change color to red
             // gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -35,25 +34,31 @@ public class SpeedPickup : MonoBehaviour
             // Disable collider
             gameObject.GetComponent<Collider>().enabled = false;
 
-            // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
-            
-            // Check if component exists
-            if (other.gameObject.GetComponent<CharacterMovement>() != null)
+            // Disable mesh of Hider avatar (Child "clone" of collided gameObject)
+
+            GameObject model = other.gameObject.transform.GetChild(1).gameObject;
+            GameObject avatar = null;
+
+            // Check if model exists
+            if (model != null)
             {
-                other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
+                avatar = model.transform.GetChild(0).gameObject;
+
+                // Check if avatar exists
+                if (avatar != null)
+                {
+                    avatar.GetComponent<MeshRenderer>().enabled = false;
+                }
             }
 
-            
-            // other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
-
-            if (respawn)
+            if (invisRespawn)
             {
-                Invoke("Respawn", respawnTime);
+                Invoke("InvisRespawn", invisRespawnTime);
             }
         }
     }
 
-    void Respawn()
+    void InvisRespawn()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Collider>().enabled = true;

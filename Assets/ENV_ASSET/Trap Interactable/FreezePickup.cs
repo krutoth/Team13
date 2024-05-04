@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPickup : MonoBehaviour
+public class FreezePickup : MonoBehaviour
 {
-    public float speedBoost = 10f;
-    public bool respawn;
-    public float respawnTime = 3f;
+    public bool freezeRespawn;
+    public float freezeRespawnTime = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Debug.Log("Collision detected");
+        
     }
 
     // Update is called once per frame
@@ -22,7 +21,7 @@ public class SpeedPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision detected");
+        Debug.Log("Collision detected for FreezePickup");
         // For testing, compare Capsule tag. For game, compare Clone tag
         if (other.gameObject.CompareTag("Seeker")) 
         {
@@ -35,26 +34,33 @@ public class SpeedPickup : MonoBehaviour
             // Disable collider
             gameObject.GetComponent<Collider>().enabled = false;
 
-            // Change speed on CharacterMovement.cs of Character object (Parent objects of Capsule and Clone)
-            
-            // Check if component exists
+            // Stop Seeker from moving for 5 seconds for both CharacterMovement.cs and MoveToPosition.cs
             if (other.gameObject.GetComponent<CharacterMovement>() != null)
             {
-                other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
+                other.gameObject.GetComponent<CharacterMovement>().speed = 0;
             }
 
-            
-            // other.gameObject.GetComponent<CharacterMovement>().speed += speedBoost;
+            // FOR NPC SEEKER, NOT WORKING
+            // if (other.gameObject.GetComponent<MoveToPosition>() != null)
+            // {
+            //     // other.gameObject.GetComponent<MoveToPosition>().agent.SetDestination(other.gameObject.transform.position);
+            //     other.gameObject.GetComponent<MoveToPosition>().enabled = false;
+            // }
 
-            if (respawn)
+            // FOR NPC SEEKER, NOT WORKING
+            // GameObject seekerObj = GameObject.Find("V3(Clone)");
+            // seekerObj.GetComponent<MoveToPosition>().enabled = false;
+
+            if (freezeRespawn)
             {
-                Invoke("Respawn", respawnTime);
+                Invoke("Respawn", freezeRespawnTime);
             }
         }
     }
 
     void Respawn()
     {
+        // yield return new WaitForSeconds(6);
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Collider>().enabled = true;
     }

@@ -50,7 +50,7 @@ public class CharacterMovement : NetworkBehaviour //MonoBehaviour
 
         charCntrl.SimpleMove(moveVect);
 
-        if(speed >= 10)
+        if(speed >= 10 || speed == 0)
         {
             StartCoroutine(waitTime());
         }
